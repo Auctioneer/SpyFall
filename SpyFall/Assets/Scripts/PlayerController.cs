@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public float maxSpeed = 10f;
 	bool facingRight = true;
 	Rigidbody2D rb2d;
-	//Animator anim;
+	Animator anim;
 
 	bool grounded = false;
 	public Transform groundCheck;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () 
 	{
 		rb2d = GetComponent<Rigidbody2D> ();
-	//	anim = GetComponent<Animator> ();
+		anim = GetComponent<Animator> ();
 	}
 
 	// Update is called once per frame
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 		//Change this to name rather than code
 		if ((grounded || !doubleJump) && Input.GetButtonDown (jumpButton)) 
 		{
-	//		anim.SetBool ("Ground", false);
+			anim.SetBool ("Ground", false);
 			rb2d.AddForce(new Vector2(0, jumpForce));
 
 			if (!doubleJump && !grounded)
@@ -44,17 +44,17 @@ public class PlayerController : MonoBehaviour {
 	{
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
-	//	anim.SetBool ("Ground", grounded);
+		anim.SetBool ("Ground", grounded);
 
 		if (grounded)
 			doubleJump = false;
 
-	//	anim.SetFloat ("verticalSpeed", rb2d.velocity.y);
+		anim.SetFloat ("verticalSpeed", rb2d.velocity.y);
 
 
 		float move = Input.GetAxis (horizontalControl);
 
-	//	anim.SetFloat ("speed", Mathf.Abs (move));
+		anim.SetFloat ("speed", Mathf.Abs (move));
 
 		rb2d.velocity = new Vector2 (move * maxSpeed, rb2d.velocity.y);
 
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 		//Vector3 Scale = transform.localScale;
 		//Scale.x *= -1;
 		//transform.localScale = Scale;
-	//	anim.transform.Rotate(0,180,0);
+		anim.transform.Rotate(0,180,0);
 	}
 
 
