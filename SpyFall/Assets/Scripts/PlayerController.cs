@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
 	{
 		//Change this to name rather than code
-		if ((grounded || !doubleJump) && Input.GetButtonDown (jumpButton)) 
+		if ((grounded == true) && Input.GetButtonDown (jumpButton)) 
 		{
 			anim.SetBool ("Ground", false);
 			rb2d.AddForce(new Vector2(0, jumpForce));
@@ -71,6 +71,18 @@ public class PlayerController : MonoBehaviour {
 		//Scale.x *= -1;
 		//transform.localScale = Scale;
 		anim.transform.Rotate(0,180,0);
+	}
+
+	void Attack()
+	{
+	}
+
+	void GetHurt()
+	{
+	}
+
+	void Die()
+	{
 	}
 
 
