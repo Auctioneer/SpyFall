@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 
 	bool doubleJump = false;
 
+
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
 	{
 		//Change this to name rather than code
-		if ((grounded == true) && Input.GetButtonDown (jumpButton)) 
+		if ((grounded || !doubleJump) && Input.GetButtonDown (jumpButton)) 
 		{
 			anim.SetBool ("Ground", false);
 			rb2d.AddForce(new Vector2(0, jumpForce));
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour {
 			Flip ();
 		else if (move < 0 && facingRight)
 			Flip ();
+		print (grounded);
 	}
 
 	void Flip()
@@ -84,6 +87,8 @@ public class PlayerController : MonoBehaviour {
 	void Die()
 	{
 	}
+		
+
 
 
 }
