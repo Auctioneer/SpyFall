@@ -1,7 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{9DAA1169-456B-E55A-D713-513647CF69D6}") = "SpyFall", "Assembly-CSharp.csproj", "{D5ECBAA1-0179-D789-5DCE-F9A092B21052}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpyFall.CSharp", "SpyFall.CSharp.csproj", "{35B1DA13-7B3A-C386-BA40-58A0A740A92C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D5ECBAA1-0179-D789-5DCE-F9A092B21052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5ECBAA1-0179-D789-5DCE-F9A092B21052}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5ECBAA1-0179-D789-5DCE-F9A092B21052}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5ECBAA1-0179-D789-5DCE-F9A092B21052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B1DA13-7B3A-C386-BA40-58A0A740A92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B1DA13-7B3A-C386-BA40-58A0A740A92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B1DA13-7B3A-C386-BA40-58A0A740A92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B1DA13-7B3A-C386-BA40-58A0A740A92C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
