@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
 	public LayerMask whatIsGround;
 	public float jumpForce = 700f;
 
+	//Not sure if this is necessary, but we may be passing keys in as parameters so the tag number could be useful
+	public int playerNumber = 1;
 	public string jumpButton = "Jump_P1";
 	public string horizontalControl = "Horizontal_P1";
 
