@@ -91,6 +91,14 @@ public class PlayerController : MonoBehaviour {
 	}
 		
 
+	void OnCollisionEnter(Collider2D enterObj)
+	{
+		if (enterObj.tag == "Bumper") 
+		{
+			rb2d.velocity = Vector2.zero;
+		}
+	}
+
 
 
 }
