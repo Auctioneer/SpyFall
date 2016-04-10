@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
 			Flip ();
 		else if (move < 0 && facingRight)
 			Flip ();
-		print (grounded);
+		//print (grounded);
 	}
 
 	void Flip()
@@ -91,13 +91,14 @@ public class PlayerController : MonoBehaviour {
 	}
 		
 
-	void OnCollisionEnter(Collider2D enterObj)
-	{
-		if (enterObj.tag == "Bumper") 
-		{
-			rb2d.velocity = Vector2.zero;
-		}
-	}
+	//void OnCollisionEnter(Collision2D enterObj)
+	//{
+	//	if (enterObj.gameObject.tag == "Bumper") 
+	//	{
+	//		rb2d.velocity = Vector2.zero;
+	//	} 
+
+	//}
 
 
 
