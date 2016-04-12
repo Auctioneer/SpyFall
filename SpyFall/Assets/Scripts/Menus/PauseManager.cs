@@ -2,6 +2,7 @@
 //For sliders, buttons, text, etc. If we need them.
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
@@ -60,5 +61,10 @@ public class PauseManager : MonoBehaviour {
 	public void ChangePauseState()
 	{
 		paused = !paused;
+	}
+
+	public void Quit()
+	{
+		SceneManager.LoadScene ("openingmenu");
 	}
 }

@@ -6,12 +6,12 @@ public class PlayerDestroyer : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D enterObj)
 	{
-		//if (enterObj.tag == "Player") 
-		//{
+		if (enterObj.gameObject.tag == "Player") 
+		{
 			print ("WEW");
-		//} 
-		//else 
-		//{
-		//}
+
+
+		} 
+
 	}
 }
