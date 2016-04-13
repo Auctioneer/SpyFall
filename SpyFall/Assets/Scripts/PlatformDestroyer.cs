@@ -12,4 +12,6 @@ public class PlatformDestroyer : MonoBehaviour {
 			Destroy (enterObject.gameObject);
 		}
 	}
+
+
 }

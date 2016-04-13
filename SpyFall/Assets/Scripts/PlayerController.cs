@@ -52,26 +52,30 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
-		anim.SetBool ("Ground", grounded);
+		if (playerControl == true)
+		{
+			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
-		if (grounded)
-			doubleJump = false;
+			anim.SetBool ("Ground", grounded);
 
-		anim.SetFloat ("verticalSpeed", rb2d.velocity.y);
+			if (grounded)
+				doubleJump = false;
+
+			anim.SetFloat ("verticalSpeed", rb2d.velocity.y);
 
 
-		float move = Input.GetAxis (horizontalControl);
+			float move = Input.GetAxis (horizontalControl);
 
-		anim.SetFloat ("speed", Mathf.Abs (move));
+			anim.SetFloat ("speed", Mathf.Abs (move));
 
-		rb2d.velocity = new Vector2 (move * maxSpeed, rb2d.velocity.y);
+			rb2d.velocity = new Vector2 (move * maxSpeed, rb2d.velocity.y);
 
-		if (move > -0 && !facingRight)
-			Flip ();
-		else if (move < 0 && facingRight)
-			Flip ();
+			if (move > -0 && !facingRight)
+				Flip ();
+			else if (move < 0 && facingRight)
+				Flip ();
+		}
 	}
 
 	void Flip()
@@ -110,6 +114,10 @@ public class PlayerController : MonoBehaviour {
 	void FlipPlayerControl()
 	{
 		playerControl = false;
+		this.rb2d.velocity = Vector3.zero;
+		this.rb2d.gravityScale = 0;
+
+			
 	}
 
 

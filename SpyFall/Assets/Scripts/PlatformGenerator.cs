@@ -14,8 +14,11 @@ public class PlatformGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		//Call generate the first time to kick things off
-		Generate ();
+		if (generating == true)
+		{
+			//Call generate the first time to kick things off
+			Generate ();
+		}
 	}
 
 	//Delegate stuff!
@@ -46,5 +49,6 @@ public class PlatformGenerator : MonoBehaviour {
 	void StopGeneration()
 	{
 		generating = false;
+		Destroy (this);
 	}
 }
