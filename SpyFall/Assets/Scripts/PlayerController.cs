@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	//Boolean to say whether the player has control over their character or not
+	bool playerControl = true;
+
 	public float maxSpeed = 10f;
 	bool facingRight = true;
 	Rigidbody2D rb2d;
@@ -33,14 +36,17 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//Change this to name rather than code
-		if ((grounded || !doubleJump) && Input.GetButtonDown (jumpButton)) 
+		if (playerControl == true)
 		{
-			anim.SetBool ("Ground", false);
-			rb2d.AddForce(new Vector2(0, jumpForce));
+			//Change this to name rather than code
+			if ((grounded || !doubleJump) && Input.GetButtonDown (jumpButton))
+			{
+				anim.SetBool ("Ground", false);
+				rb2d.AddForce (new Vector2 (0, jumpForce));
 
-			if (!doubleJump && !grounded)
-				doubleJump = true;
+				if (!doubleJump && !grounded)
+					doubleJump = true;
+			}
 		}
 	}
 
@@ -66,7 +72,6 @@ public class PlayerController : MonoBehaviour {
 			Flip ();
 		else if (move < 0 && facingRight)
 			Flip ();
-		//print (grounded);
 	}
 
 	void Flip()
@@ -91,15 +96,21 @@ public class PlayerController : MonoBehaviour {
 	}
 		
 
-	//void OnCollisionEnter(Collision2D enterObj)
-	//{
-	//	if (enterObj.gameObject.tag == "Bumper") 
-	//	{
-	//		rb2d.velocity = Vector2.zero;
-	//	} 
+	//Delegate stuff!
+	void OnEnable()
+	{
+		GameManager.EndGame += FlipPlayerControl;
+	}
 
-	//}
+	void OnDisable()
+	{
+		GameManager.EndGame -= FlipPlayerControl;
+	}
 
+	void FlipPlayerControl()
+	{
+		playerControl = false;
+	}
 
 
 }
