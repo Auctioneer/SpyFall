@@ -8,6 +8,19 @@ public class MovingPlatform : MonoBehaviour {
 	//If false, platform should use Vector3 for movement instead, which will make it rotate
 	public bool useVectorTwo = true;
 
+	//Stops the move method being called when this changes in StopMoving
+	bool currentlyMoving = true;
+
+	//Delegate stuff!
+	void OnEnable()
+	{
+		GameManager.EndGame += StopMoving;
+	}
+
+	void OnDisable()
+	{
+		GameManager.EndGame -= StopMoving;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +30,10 @@ public class MovingPlatform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		Move ();
+		if (currentlyMoving == true)
+		{
+			Move ();
+		}
 
 	}
 
@@ -38,5 +54,18 @@ public class MovingPlatform : MonoBehaviour {
 		}
 
 
+	}
+
+	//Method to make the platform stop moving when the game ends
+	void StopMoving()
+	{
+		print ("StopMoving in MovingPlatform called");
+		currentlyMoving = false;
+
+		//Get rid of any off-screen platforms
+		if (this.transform.position.y < -13)
+		{
+			Destroy (this.gameObject);
+		}
 	}
 }
