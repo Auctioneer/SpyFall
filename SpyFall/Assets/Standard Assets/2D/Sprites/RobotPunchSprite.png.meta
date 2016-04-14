@@ -1,0 +1,334 @@
+fileFormatVersion: 2
+guid: 0a0822729cabbff44bd7a07db120af96
+timeCreated: 1460643460
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: RobotPunchSprite_0
+    21300002: RobotPunchSprite_1
+    21300004: RobotPunchSprite_2
+    21300006: RobotPunchSprite_3
+    21300008: RobotPunchSprite_4
+    21300010: RobotPunchSprite_5
+    21300012: RobotPunchSprite_6
+    21300014: RobotPunchSprite_7
+    21300016: RobotPunchSprite_8
+    21300018: RobotPunchSprite_9
+    21300020: RobotPunchSprite_10
+    21300022: RobotPunchSprite_11
+    21300024: RobotPunchSprite_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: RobotPunchSprite_0
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1785
+        width: 88
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 110}
+        - {x: -43, y: 102}
+        - {x: -44, y: 98}
+        - {x: -44, y: -47}
+        - {x: -43, y: -61}
+        - {x: -33, y: -107}
+        - {x: -28, y: -110}
+        - {x: 44, y: -110}
+        - {x: 44, y: 110}
+    - name: RobotPunchSprite_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 1785
+        width: 120
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 110}
+        - {x: -60, y: 73}
+        - {x: -60, y: -41}
+        - {x: -18, y: -110}
+        - {x: 35, y: -110}
+        - {x: 43, y: -86}
+        - {x: 60, y: 14}
+        - {x: 60, y: 110}
+    - name: RobotPunchSprite_2
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 1784
+        width: 103
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 51.5, y: 106.5}
+        - {x: 37.5, y: 110.5}
+        - {x: -29.5, y: 110.5}
+        - {x: -35.5, y: 96.5}
+        - {x: -51.5, y: 50.5}
+        - {x: -51.5, y: -24.5}
+        - {x: -27.5, y: -105.5}
+        - {x: -21.5, y: -108.5}
+        - {x: -4.5, y: -110.5}
+        - {x: 24.5, y: -110.5}
+        - {x: 26.5, y: -108.5}
+        - {x: 23.5, y: -97.5}
+        - {x: 51.5, y: -25.5}
+    - name: RobotPunchSprite_3
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 1784
+        width: 96
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 110.5}
+        - {x: -48, y: 109.5}
+        - {x: -48, y: -46.5}
+        - {x: -38, y: -110.5}
+        - {x: 34, y: -110.5}
+        - {x: 48, y: -24.5}
+        - {x: 48, y: 110.5}
+    - name: RobotPunchSprite_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1785
+        width: 101
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.5, y: 24}
+        - {x: 23.5, y: 23}
+        - {x: 11.5, y: 16}
+        - {x: 15.5, y: 19}
+        - {x: 44.5, y: 35}
+        - {x: 50.5, y: 73}
+        - {x: 50.5, y: 100}
+        - {x: 17.5, y: 110}
+        - {x: -50.5, y: 110}
+        - {x: -50.5, y: -110}
+        - {x: 16.5, y: -110}
+        - {x: 42.5, y: -67}
+        - {x: 50.5, y: -38}
+        - {x: 50.5, y: 35}
+    - name: RobotPunchSprite_5
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 1785
+        width: 110
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: 34}
+        - {x: 24, y: 109}
+        - {x: 17, y: 110}
+        - {x: -46, y: 110}
+        - {x: -55, y: 83}
+        - {x: -55, y: -40}
+        - {x: -48, y: -98}
+        - {x: -42, y: -110}
+        - {x: 7, y: -110}
+        - {x: 8, y: -109}
+        - {x: 4, y: -98}
+        - {x: 55, y: 6}
+    - name: RobotPunchSprite_6
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 1784
+        width: 110
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53, y: 110.5}
+        - {x: -55, y: 98.5}
+        - {x: -55, y: -89.5}
+        - {x: -50, y: -110.5}
+        - {x: 55, y: -110.5}
+        - {x: 55, y: 110.5}
+    - name: RobotPunchSprite_7
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1510
+        width: 122
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: 110}
+        - {x: -61, y: -86}
+        - {x: -54, y: -106}
+        - {x: -47, y: -110}
+        - {x: 14, y: -110}
+        - {x: 61, y: -26}
+        - {x: 61, y: 50}
+        - {x: 29, y: 110}
+    - name: RobotPunchSprite_8
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 1510
+        width: 132
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 66, y: 84}
+        - {x: 32, y: 110}
+        - {x: -66, y: 110}
+        - {x: -66, y: -110}
+        - {x: -6, y: -110}
+        - {x: -4, y: -109}
+        - {x: -8, y: -98}
+        - {x: 66, y: 3}
+    - name: RobotPunchSprite_9
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 1510
+        width: 142
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71, y: 111}
+        - {x: -71, y: -108}
+        - {x: -64, y: -111}
+        - {x: 46, y: -111}
+        - {x: 71, y: -57}
+        - {x: 71, y: 102}
+        - {x: 48, y: 111}
+    - name: RobotPunchSprite_10
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1510
+        width: 153
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 76.5, y: 45}
+        - {x: 37.5, y: 108}
+        - {x: 23.5, y: 111}
+        - {x: -73.5, y: 111}
+        - {x: -76.5, y: 105}
+        - {x: -76.5, y: -111}
+        - {x: -14.5, y: -111}
+        - {x: -14.5, y: -110}
+        - {x: -18.5, y: -99}
+        - {x: 76.5, y: -18}
+    - name: RobotPunchSprite_11
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1510
+        width: 91
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 45.5, y: 12}
+        - {x: 45.5, y: 93}
+        - {x: 15.5, y: 111}
+        - {x: -34.5, y: 111}
+        - {x: -45.5, y: 79}
+        - {x: -45.5, y: -61}
+        - {x: -41.5, y: -111}
+        - {x: 18.5, y: -111}
+        - {x: 18.5, y: -110}
+        - {x: 14.5, y: -99}
+        - {x: 9.5, y: -98}
+      - - {x: 27.5, y: 22}
+        - {x: 21.5, y: 15}
+        - {x: 21.5, y: 6}
+        - {x: 23.5, y: -5}
+        - {x: 25.5, y: -6}
+        - {x: 36.5, y: -6}
+        - {x: 45.5, y: -4}
+        - {x: 45.5, y: 22}
+    - name: RobotPunchSprite_12
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 1616
+        width: 97
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
