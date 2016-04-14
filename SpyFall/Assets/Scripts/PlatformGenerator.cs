@@ -10,21 +10,15 @@ public class PlatformGenerator : MonoBehaviour {
 	public float spawnMax = 2f;
 
 	//Time to wait before generating the first platform
-	public float initialInterval = 0.4f;
+	//This is given a random value in the initialDelay method
+	float initialInterval = 0.4f;
 
 	bool generating = true;
 
 	// Use this for initialization
 	void Start () 
 	{
-
 		StartCoroutine (initialDelay ());
-
-		//if (generating == true)
-		//{
-			//Call generate the first time to kick things off
-		//	Generate ();
-		//}
 	}
 
 	//Delegate stuff!
@@ -60,6 +54,8 @@ public class PlatformGenerator : MonoBehaviour {
 
 	IEnumerator initialDelay()
 	{
+		initialInterval = Random.Range (0, 1.2f);
+
 		yield return new WaitForSeconds (initialInterval);
 		Generate ();
 	}
