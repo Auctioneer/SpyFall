@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	public int playerNumber = 1;
 	public string jumpButton = "Jump_P1";
 	public string horizontalControl = "Horizontal_P1";
+	public string attackButton = "Attack_P1";
 
 	bool doubleJump = false;
 
@@ -46,6 +47,10 @@ public class PlayerController : MonoBehaviour {
 
 				if (!doubleJump && !grounded)
 					doubleJump = true;
+			}
+			else if (Input.GetButtonDown (attackButton))
+			{
+				Attack ();
 			}
 		}
 	}
@@ -89,6 +94,10 @@ public class PlayerController : MonoBehaviour {
 
 	void Attack()
 	{
+		//I think I may need to give up player control for the duration of a punch
+		//This will choose the punch and kick thing depending on whether it's grounded - eventually
+
+
 	}
 
 	void GetHurt()
