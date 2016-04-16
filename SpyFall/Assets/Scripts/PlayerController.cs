@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 
 	public float maxSpeed = 10f;
 	bool facingRight = true;
+	bool attacking = false;
+
 	Rigidbody2D rb2d;
 	Animator anim;
 
@@ -50,6 +52,8 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (Input.GetButtonDown (attackButton))
 			{
+				//Not sure I need the bool, given the way I've written this
+				attacking = true;
 				Attack ();
 			}
 		}
@@ -97,8 +101,16 @@ public class PlayerController : MonoBehaviour {
 		//I think I may need to give up player control for the duration of a punch
 		//This will choose the punch and kick thing depending on whether it's grounded - eventually
 
+		if (attacking == true)
+		{
+			anim.SetTrigger ("Attack");
+		}
+
 
 	}
+
+
+
 
 	void GetHurt()
 	{
