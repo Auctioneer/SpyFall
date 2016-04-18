@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour {
 	public string horizontalControl = "Horizontal_P1";
 	public string attackButton = "Attack_P1";
 
+	public float damageTime = 1.0f;
+	int hitCounter = 0;
 	bool doubleJump = false;
 
 
@@ -110,10 +112,19 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-
-
-	void GetHurt()
+	//Method for when the player is hit by the other
+	//Needs to be an IEnumerator because it's a timing thing - it's a coroutine
+	IEnumerator TakeDamage()
 	{
+		//Add one to number of hits on the other player's UI
+		//Will need to be a method to update this after
+		hitCounter++;
+
+		anim.SetTrigger ("Damage");
+		FlipPlayerControl ();
+		yield return new WaitForSeconds (damageTime);
+		FlipPlayerControl ();
+
 	}
 
 	void Die()
