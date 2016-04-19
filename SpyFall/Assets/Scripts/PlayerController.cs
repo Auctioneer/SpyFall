@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour {
 	int hitCounter = 0;
 	bool doubleJump = false;
 
+	//Attack hitbox
+	public BoxCollider2D attackTrigger;
+
 
 
 	// Use this for initialization
@@ -36,6 +39,9 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb2d = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
+
+		//We start with the attackTrigger disabled
+		attackTrigger.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -98,28 +104,40 @@ public class PlayerController : MonoBehaviour {
 		anim.transform.Rotate(0,180,0);
 	}
 
+
+
 	void Attack()
 	{
 		//I think I may need to give up player control for the duration of a punch
 		//This will choose the punch and kick thing depending on whether it's grounded - eventually
-
+		//Regardless, we use the same box collider
 		if (attacking == true)
 		{
+			attackTrigger.enabled = true;
+			//Play attack animation
 			anim.SetTrigger ("Attack");
 		}
-
 
 	}
 
 
+
+
+
+	//When the player is hit by another player
+	void DamageCollide()
+	{
+		//Should call TakeDamage from there
+	}
+
 	//Method for when the player is hit by the other
 	//Needs to be an IEnumerator because it's a timing thing - it's a coroutine
-	IEnumerator TakeDamage()
+	public IEnumerator TakeDamage()
 	{
 		//Add one to number of hits on the other player's UI
 		//Will need to be a method to update this after
 		hitCounter++;
-
+		print ("Other player has taken damage.");
 		anim.SetTrigger ("Damage");
 		FlipPlayerControl ();
 		yield return new WaitForSeconds (damageTime);
