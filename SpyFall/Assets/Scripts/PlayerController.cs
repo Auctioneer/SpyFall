@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour {
 		//I think I may need to give up player control for the duration of a punch
 		//This will choose the punch and kick thing depending on whether it's grounded - eventually
 		//Regardless, we use the same box collider
+
 		if (attacking == true)
 		{
 			attackTrigger.enabled = true;
@@ -120,10 +121,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 	}
-
-
-
-
+		
 
 	//When the player is hit by another player
 	void DamageCollide()
@@ -137,18 +135,21 @@ public class PlayerController : MonoBehaviour {
 	public IEnumerator playerDamage()
 	{
 		print ("in playerdamage");
+		attackTrigger.enabled = false;
 		//Add one to number of hits on the other player's UI
 		//Will need to be a method to update this after
 		hitCounter++;
 		print ("Other player has taken damage.");
 		anim.SetTrigger ("Damage");
 		FlipPlayerControl ();
+		print ("player off");
 		yield return new WaitForSeconds (damageTime);
 		FlipPlayerControl ();
+		print ("player on");
 
 	}
 
-	void TakeDamage()
+	public void TakeDamage()
 	{
 		print ("takedamage in player called");
 		StartCoroutine(playerDamage ());
@@ -163,24 +164,27 @@ public class PlayerController : MonoBehaviour {
 	void OnEnable()
 	{
 		GameManager.EndGame += FlipPlayerControl;
-		AttackTriggerScript.causeDamage += TakeDamage;
 	}
 
 	void OnDisable()
 	{
 		GameManager.EndGame -= FlipPlayerControl;
-		AttackTriggerScript.causeDamage -= TakeDamage;
 	}
 
 	void FlipPlayerControl()
 	{
-		playerControl = false;
-		this.rb2d.velocity = Vector3.zero;
-		this.rb2d.gravityScale = 0;
-
+		if (playerControl == true)
+		{
+			playerControl = false;
+			this.rb2d.velocity = Vector3.zero;
+			this.rb2d.gravityScale = 0;
+		}
+		else
+		{
+			playerControl = true;
+			this.rb2d.gravityScale = 3;
+		}
 			
 	}
 		
-
-
 }
