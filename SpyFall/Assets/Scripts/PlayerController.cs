@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour {
 			attackTrigger.enabled = true;
 			//Play attack animation
 			anim.SetTrigger ("Attack");
+
 		}
 
 	}
@@ -128,12 +129,14 @@ public class PlayerController : MonoBehaviour {
 	void DamageCollide()
 	{
 		//Should call TakeDamage from there
+		attackTrigger.enabled = false;
 	}
 
 	//Method for when the player is hit by the other
 	//Needs to be an IEnumerator because it's a timing thing - it's a coroutine
-	public IEnumerator TakeDamage()
+	public IEnumerator playerDamage()
 	{
+		print ("in playerdamage");
 		//Add one to number of hits on the other player's UI
 		//Will need to be a method to update this after
 		hitCounter++;
@@ -145,6 +148,12 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+	void TakeDamage()
+	{
+		print ("takedamage in player called");
+		StartCoroutine(playerDamage ());
+	}
+
 	void Die()
 	{
 	}
@@ -154,11 +163,13 @@ public class PlayerController : MonoBehaviour {
 	void OnEnable()
 	{
 		GameManager.EndGame += FlipPlayerControl;
+		AttackTriggerScript.causeDamage += TakeDamage;
 	}
 
 	void OnDisable()
 	{
 		GameManager.EndGame -= FlipPlayerControl;
+		AttackTriggerScript.causeDamage -= TakeDamage;
 	}
 
 	void FlipPlayerControl()
@@ -169,6 +180,7 @@ public class PlayerController : MonoBehaviour {
 
 			
 	}
+		
 
 
 }

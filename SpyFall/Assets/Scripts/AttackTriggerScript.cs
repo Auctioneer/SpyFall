@@ -3,6 +3,9 @@ using System.Collections;
 
 public class AttackTriggerScript : MonoBehaviour {
 
+	public delegate void PlayerDamage();
+	public static event PlayerDamage causeDamage;
+
 	//Destroys every object it touches
 	void OnTriggerEnter2D(Collider2D enterObject)
 	{
@@ -10,19 +13,20 @@ public class AttackTriggerScript : MonoBehaviour {
 		if (enterObject.tag == "Player")
 		{
 			//Call the player's take damage function
+			StartCauseDamage();
 
 		}
 	}
 
-	void enable()
+	void StartCauseDamage()
 	{
-		this.enable;
+		print ("startcausedamage in attack trigger called");
+		if (causeDamage != null)
+		{
+			causeDamage();
+		}
 	}
 
-	void disable()
-	{
-		this.disable;
-	}
 
-
+		
 }
