@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	public delegate void EndGameEvent();
 	public static event EndGameEvent EndGame;
 
+	GameObject pl;
+
 
 	//Delegate stuff!
 	void OnEnable()
@@ -46,6 +48,41 @@ public class GameManager : MonoBehaviour {
 		{
 			EndGame ();
 		}
+	}
+
+	//Method to stop player control
+	public IEnumerator DisablePlayerControl(int player)
+	{
+		print ("We're in gm disable");
+		print (player);
+		if (player == 1)
+		{
+			pl = GameObject.Find ("Player1");
+			print (pl);
+			pl.GetComponent<PlayerController> ().enabled = false;
+
+			yield return new WaitForSeconds (3.0f);
+
+			pl.GetComponent<PlayerController> ().enabled = true;
+
+		}
+		else
+		{
+			pl = GameObject.Find ("Player2");
+			print (pl);
+			pl.GetComponent<PlayerController> ().DamageAnim ();
+			pl.GetComponent<PlayerController> ().enabled = false;
+
+			//yield return new WaitForSeconds (3.0f);
+
+
+			
+		}
+	}
+
+	public void resumePlayerControl()
+	{
+		pl.GetComponent<PlayerController> ().enabled = true;
 	}
 
 }

@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	//Method to flip the player character
 	void Flip()
 	{
 		facingRight = !facingRight;
@@ -105,7 +106,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-
+	//Method to run an attack
 	void Attack()
 	{
 		//I think I may need to give up player control for the duration of a punch
@@ -119,6 +120,7 @@ public class PlayerController : MonoBehaviour {
 			anim.SetTrigger ("Attack");
 
 		}
+		attacking = false;
 
 	}
 		
@@ -152,7 +154,13 @@ public class PlayerController : MonoBehaviour {
 	public void TakeDamage()
 	{
 		print ("takedamage in player called");
-		StartCoroutine(playerDamage ());
+
+		//Call game manager's take damage function, passing in 'this' - the player
+		GameObject gm = GameObject.Find("GameManager");
+		StartCoroutine(gm.GetComponent<GameManager>().DisablePlayerControl(playerNumber));
+
+
+		//StartCoroutine(playerDamage ());
 	}
 
 	void Die()
@@ -164,6 +172,7 @@ public class PlayerController : MonoBehaviour {
 	void OnEnable()
 	{
 		GameManager.EndGame += FlipPlayerControl;
+
 	}
 
 	void OnDisable()
@@ -185,6 +194,17 @@ public class PlayerController : MonoBehaviour {
 			this.rb2d.gravityScale = 3;
 		}
 			
+	}
+
+	public void DamageAnim()
+	{
+		anim.SetTrigger ("Damage");
+	}
+
+	void ResumeControlFromDamage()
+	{
+		GameObject gm = GameObject.Find("GameManager");
+		gm.GetComponent<GameManager>().resumePlayerControl();
 	}
 		
 }
