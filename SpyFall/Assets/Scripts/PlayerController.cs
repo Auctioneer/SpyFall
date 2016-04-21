@@ -109,13 +109,11 @@ public class PlayerController : MonoBehaviour {
 	//Method to run an attack
 	void Attack()
 	{
-		//I think I may need to give up player control for the duration of a punch
-		//This will choose the punch and kick thing depending on whether it's grounded - eventually
-		//Regardless, we use the same box collider
 
 		if (attacking == true)
 		{
 			attackTrigger.enabled = true;
+	
 			//Play attack animation
 			anim.SetTrigger ("Attack");
 
@@ -143,10 +141,11 @@ public class PlayerController : MonoBehaviour {
 		hitCounter++;
 		print ("Other player has taken damage.");
 		anim.SetTrigger ("Damage");
-		FlipPlayerControl ();
-		print ("player off");
+		//FlipPlayerControl ();
+		//print ("player off");
 		yield return new WaitForSeconds (damageTime);
-		FlipPlayerControl ();
+		playerControl = true;
+		//FlipPlayerControl ();
 		print ("player on");
 
 	}
@@ -156,11 +155,12 @@ public class PlayerController : MonoBehaviour {
 		print ("takedamage in player called");
 
 		//Call game manager's take damage function, passing in 'this' - the player
-		GameObject gm = GameObject.Find("GameManager");
-		StartCoroutine(gm.GetComponent<GameManager>().DisablePlayerControl(playerNumber));
+		//GameObject gm = GameObject.Find("GameManager");
+		//StartCoroutine(gm.GetComponent<GameManager>().DisablePlayerControl(playerNumber));
 
+		playerControl = false;
 
-		//StartCoroutine(playerDamage ());
+		StartCoroutine(playerDamage ());
 	}
 
 	void Die()
@@ -198,13 +198,14 @@ public class PlayerController : MonoBehaviour {
 
 	public void DamageAnim()
 	{
-		anim.SetTrigger ("Damage");
+//		anim.SetTrigger ("Damage");
 	}
 
 	void ResumeControlFromDamage()
 	{
-		GameObject gm = GameObject.Find("GameManager");
-		gm.GetComponent<GameManager>().resumePlayerControl();
+	//	GameObject gm = GameObject.Find("GameManager");
+		//gm.GetComponent<GameManager>().resumePlayerControl();
+		playerControl = true;
 	}
 		
 }
