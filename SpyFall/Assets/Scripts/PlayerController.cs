@@ -132,21 +132,21 @@ public class PlayerController : MonoBehaviour {
 
 	//Method for when the player is hit by the other
 	//Needs to be an IEnumerator because it's a timing thing - it's a coroutine
+	//Does this need to be a coroutine though? Investigate
 	public IEnumerator playerDamage()
 	{
 		print ("in playerdamage");
 		attackTrigger.enabled = false;
+
 		//Add one to number of hits on the other player's UI
 		//Will need to be a method to update this after
 		hitCounter++;
 		print ("Other player has taken damage.");
 		anim.SetTrigger ("Damage");
-		//FlipPlayerControl ();
-		//print ("player off");
+
 		yield return new WaitForSeconds (damageTime);
 		playerControl = true;
-		//FlipPlayerControl ();
-		print ("player on");
+
 
 	}
 
@@ -154,11 +154,12 @@ public class PlayerController : MonoBehaviour {
 	{
 		print ("takedamage in player called");
 
-		//Call game manager's take damage function, passing in 'this' - the player
-		//GameObject gm = GameObject.Find("GameManager");
-		//StartCoroutine(gm.GetComponent<GameManager>().DisablePlayerControl(playerNumber));
-
+		//Give up player control
 		playerControl = false;
+
+		//We can't disable the box collider because it'll fall through and we need platforms to be able to act on it
+		//So let's make it so it can't collide with the player layer
+
 
 		StartCoroutine(playerDamage ());
 	}
@@ -180,6 +181,8 @@ public class PlayerController : MonoBehaviour {
 		GameManager.EndGame -= FlipPlayerControl;
 	}
 
+
+	//This method should be renamed or edited
 	void FlipPlayerControl()
 	{
 		if (playerControl == true)
@@ -203,8 +206,6 @@ public class PlayerController : MonoBehaviour {
 
 	void ResumeControlFromDamage()
 	{
-	//	GameObject gm = GameObject.Find("GameManager");
-		//gm.GetComponent<GameManager>().resumePlayerControl();
 		playerControl = true;
 	}
 		
