@@ -138,6 +138,9 @@ public class PlayerController : MonoBehaviour {
 		print ("in playerdamage");
 		attackTrigger.enabled = false;
 
+		//Move the player to the 'hurt' layer so the other player can pass through them
+		this.gameObject.layer = LayerMask.NameToLayer("HurtPlayer");
+
 		//Add one to number of hits on the other player's UI
 		//Will need to be a method to update this after
 		hitCounter++;
@@ -147,6 +150,10 @@ public class PlayerController : MonoBehaviour {
 		yield return new WaitForSeconds (damageTime);
 		playerControl = true;
 
+		//print ("should move back to layer now!");
+		//Move the player back to the player layer
+		this.gameObject.layer = LayerMask.NameToLayer("Player");
+		//print (this.gameObject.layer.ToString());
 
 	}
 
