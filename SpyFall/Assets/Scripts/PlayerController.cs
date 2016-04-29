@@ -206,6 +206,18 @@ public class PlayerController : MonoBehaviour {
 			
 	}
 
+	void PlayerControlOnOff()
+	{
+		if (playerControl == true)
+		{
+			playerControl = false;
+		}
+		else 
+		{
+			playerControl = true;
+		}
+	}
+
 	public void DamageAnim()
 	{
 //		anim.SetTrigger ("Damage");
