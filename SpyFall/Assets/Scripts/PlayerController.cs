@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -32,7 +33,8 @@ public class PlayerController : MonoBehaviour {
 	//Attack hitbox
 	public BoxCollider2D attackTrigger;
 
-
+	//Hit counter text
+	public Text hitText;
 
 	// Use this for initialization
 	void Start () 
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour {
 			else if (Input.GetButtonDown (attackButton))
 			{
 				//Not sure I need the bool, given the way I've written this
-				attacking = true;
+				//attacking = true;
 				Attack ();
 			}
 		}
@@ -109,24 +111,18 @@ public class PlayerController : MonoBehaviour {
 	//Method to run an attack
 	void Attack()
 	{
+		attackTrigger.enabled = true;
 
-		if (attacking == true)
-		{
-			attackTrigger.enabled = true;
-	
-			//Play attack animation
-			anim.SetTrigger ("Attack");
-
-		}
-		attacking = false;
+		//Play attack animation
+		anim.SetTrigger ("Attack");
 
 	}
 		
 
 	//When the player is hit by another player
-	void DamageCollide()
+	public void EndAttack()
 	{
-		//Should call TakeDamage from there
+		//Remove the attack trigger
 		attackTrigger.enabled = false;
 	}
 
@@ -141,32 +137,42 @@ public class PlayerController : MonoBehaviour {
 		//Move the player to the 'hurt' layer so the other player can pass through them
 		this.gameObject.layer = LayerMask.NameToLayer("HurtPlayer");
 
-		//Add one to number of hits on the other player's UI
-		//Will need to be a method to update this after
-		hitCounter++;
-		print ("Other player has taken damage.");
+		print ("Player is in hurtplayer layer.");
 		anim.SetTrigger ("Damage");
 
 		yield return new WaitForSeconds (damageTime);
 		playerControl = true;
 
-		//print ("should move back to layer now!");
-		//Move the player back to the player layer
+		//Move player back to Player layer
 		this.gameObject.layer = LayerMask.NameToLayer("Player");
-		//print (this.gameObject.layer.ToString());
 
+	}
+
+	//Method to update the player's hit counter
+	void UpdateHits()
+	{
+		//Add one to number of hits on the other player's UI
+		//Will need to be a method to update this after
+		hitCounter++;
+
+		print (hitCounter);
+
+		//We need to get the specific component
+		hitText.text = hitCounter.ToString ();
 	}
 
 	public void TakeDamage()
 	{
 		print ("takedamage in player called");
 
+		//Now update the hit counter
+		UpdateHits();
+
 		//Give up player control
 		playerControl = false;
 
 		//We can't disable the box collider because it'll fall through and we need platforms to be able to act on it
-		//So let's make it so it can't collide with the player layer
-
+		//So we'll make sure it can't collide with the player layer
 
 		StartCoroutine(playerDamage ());
 	}
@@ -180,12 +186,13 @@ public class PlayerController : MonoBehaviour {
 	void OnEnable()
 	{
 		GameManager.EndGame += FlipPlayerControl;
-
+		AttackTriggerScript.DisableTrigger += EndAttack;
 	}
 
 	void OnDisable()
 	{
 		GameManager.EndGame -= FlipPlayerControl;
+		AttackTriggerScript.DisableTrigger -= EndAttack;
 	}
 
 
@@ -216,11 +223,6 @@ public class PlayerController : MonoBehaviour {
 		{
 			playerControl = true;
 		}
-	}
-
-	public void DamageAnim()
-	{
-//		anim.SetTrigger ("Damage");
 	}
 
 	void ResumeControlFromDamage()
