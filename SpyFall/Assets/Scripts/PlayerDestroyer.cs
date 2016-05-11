@@ -11,8 +11,6 @@ public class PlayerDestroyer : MonoBehaviour {
 		if (enterObj.gameObject.tag == "Player") 
 		{
 			callEndGame ();
-			//We can get the player's name this way
-			//print (enterObj.gameObject.name);
 		} 
 
 	}

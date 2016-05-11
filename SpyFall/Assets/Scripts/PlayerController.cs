@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour {
 	}
 		
 
-	//When the player is hit by another player
+	//Upon finishing the attack animation
 	public void EndAttack()
 	{
 		//Remove the attack trigger
