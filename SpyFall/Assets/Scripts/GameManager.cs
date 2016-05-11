@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 	public static event EndGameEvent EndGame;
 
 	//What does this do? I think the answer is nothing
-	GameObject pl;
+	//GameObject pl;
 
 
 	//Delegate stuff!

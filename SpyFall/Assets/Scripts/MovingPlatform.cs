@@ -59,7 +59,6 @@ public class MovingPlatform : MonoBehaviour {
 	//Method to make the platform stop moving when the game ends
 	void StopMoving()
 	{
-		print ("StopMoving in MovingPlatform called");
 		currentlyMoving = false;
 
 		//Get rid of any off-screen platforms

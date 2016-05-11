@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour {
 
 	public float maxSpeed = 10f;
 	bool facingRight = true;
-	bool attacking = false;
+	//bool attacking = false;
+
+	int flipCount = 0;
 
 	Rigidbody2D rb2d;
 	Animator anim;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+
 		if (playerControl == true)
 		{
 			//Change this to name rather than code
@@ -71,6 +74,11 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+
+		if (playerNumber == 1)
+		{
+			print (playerControl);
+		}
 
 		if (playerControl == true)
 		{
@@ -140,8 +148,8 @@ public class PlayerController : MonoBehaviour {
 		print ("Player is in hurtplayer layer.");
 		anim.SetTrigger ("Damage");
 
+		//Stop player movement for the duration of the damage time
 		yield return new WaitForSeconds (damageTime);
-		playerControl = true;
 
 		//Move player back to Player layer
 		this.gameObject.layer = LayerMask.NameToLayer("Player");
@@ -168,8 +176,10 @@ public class PlayerController : MonoBehaviour {
 		//Now update the hit counter
 		UpdateHits();
 
+		//Flip player control
+		PlayerControlOnOff ();
 		//Give up player control
-		playerControl = false;
+		//playerControl = false;
 
 		//We can't disable the box collider because it'll fall through and we need platforms to be able to act on it
 		//So we'll make sure it can't collide with the player layer
@@ -185,44 +195,55 @@ public class PlayerController : MonoBehaviour {
 	//Delegate stuff!
 	void OnEnable()
 	{
-		GameManager.EndGame += FlipPlayerControl;
+		GameManager.EndGame += callPlayerControl;
 		AttackTriggerScript.DisableTrigger += EndAttack;
 	}
 
 	void OnDisable()
 	{
-		GameManager.EndGame -= FlipPlayerControl;
+		GameManager.EndGame -= callPlayerControl;
 		AttackTriggerScript.DisableTrigger -= EndAttack;
 	}
 
 
 	//This method should be renamed or edited
-	void FlipPlayerControl()
-	{
-		if (playerControl == true)
-		{
-			playerControl = false;
-			this.rb2d.velocity = Vector3.zero;
-			this.rb2d.gravityScale = 0;
-		}
-		else
-		{
-			playerControl = true;
-			this.rb2d.gravityScale = 3;
-		}
+	//void FlipPlayerControl()
+	//{
+	//	if (playerControl == true)
+	//	{
+	//		playerControl = false;
+	//		this.rb2d.velocity = Vector3.zero;
+	//		this.rb2d.gravityScale = 0;
+	//	}
+	//	else
+	//	{
+	//		playerControl = true;
+	//		this.rb2d.gravityScale = 3;
+	//	}
 			
+	//}
+
+	//Delegate is being buggy, let's see if calling it from here works
+	void callPlayerControl()
+	{
+		print ("Calling!");
 	}
 
 	void PlayerControlOnOff()
 	{
-		if (playerControl == true)
-		{
-			playerControl = false;
-		}
-		else 
-		{
-			playerControl = true;
-		}
+		flipCount++;
+
+		//if (playerControl == true)
+		//{
+	//		playerControl = false;
+	//	}
+	//	else 
+	//	{
+	//		playerControl = true;
+	//	}
+
+		playerControl = !playerControl;
+		print ("Okay, we flipped it! Count: " + flipCount);
 	}
 
 	void ResumeControlFromDamage()
