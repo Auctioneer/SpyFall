@@ -10,7 +10,7 @@ public class PlayerDestroyer : MonoBehaviour {
 	{
 		if (enterObj.gameObject.tag == "Player") 
 		{
-			callEndGame ();
+			EndGameCall ();
 			this.enabled = false;
 		} 
 

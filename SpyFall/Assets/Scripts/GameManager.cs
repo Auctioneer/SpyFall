@@ -10,10 +10,6 @@ public class GameManager : MonoBehaviour {
 	public delegate void EndGameEvent();
 	public static event EndGameEvent EndGame;
 
-	//What does this do? I think the answer is nothing
-	//GameObject pl;
-
-
 	//Delegate stuff!
 	void OnEnable()
 	{
@@ -29,6 +25,7 @@ public class GameManager : MonoBehaviour {
 	{
 		print ("EndGameInit called");
 		EndGameBroadcast ();
+
 	}
 
 
@@ -42,14 +39,11 @@ public class GameManager : MonoBehaviour {
 	void Update()
 	{
 		//Check to see if the timer has run down
-		if (timer.GetComponent<TimerScript>().getTime () == 0.0f)
+		if ((timer.GetComponent<TimerScript>().getTime () == 0.0f) && (gameEnded == false))
 		{
 			gameEnded = true;
 		}		
-
-		//This condition is otherwise fulfulled when a player hits the top of the screen
-		if (gameEnded == true)
-			EndGameBroadcast ();
+			
 	}
 
 	void EndGameBroadcast()

@@ -34,16 +34,16 @@ public class UIManager : MonoBehaviour {
 		//winID refers to which player won
 
 		//0 = draw
-		switch (winID)
-		{
-		case 0:
-			winnerText.text = "Draw!";
-		case 1:
-			winnerText.text = "Player 1 wins!";
-		case 2:
-			winnerText.text = "Player 2 wins!";
-		default:
-			winnerText.text = "Well, this shouldn't have happened.";	
-		}
+	//	switch (winID)
+	//	{
+	//	case 0:
+	//		winnerText.text = "Draw!";
+	//	case 1:
+	//		winnerText.text = "Player 1 wins!";
+	//	case 2:
+	//		winnerText.text = "Player 2 wins!";
+	//	default:
+	//		winnerText.text = "Well, this shouldn't have happened.";	
+	//	}
 	}
 }

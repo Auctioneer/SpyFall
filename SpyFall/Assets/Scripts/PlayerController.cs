@@ -195,13 +195,13 @@ public class PlayerController : MonoBehaviour {
 	//Delegate stuff!
 	void OnEnable()
 	{
-		GameManager.EndGame += callPlayerControl;
+		GameManager.EndGame += PlayerControlOnOff;
 		AttackTriggerScript.DisableTrigger += EndAttack;
 	}
 
 	void OnDisable()
 	{
-		GameManager.EndGame -= callPlayerControl;
+		GameManager.EndGame -= PlayerControlOnOff;
 		AttackTriggerScript.DisableTrigger -= EndAttack;
 	}
 
