@@ -13,8 +13,9 @@ public class PlayerDestroyer : MonoBehaviour {
 		if (whatObject.tag == "Player") 
 		{
 			int playerDead = whatObject.GetComponent<PlayerController> ().getPlayerNumber ();
-
+			print ("Collided with " + playerDead);
 			this.enabled = false;
+			print ("Now calling EndGameCall in PlayerDestroyer");
 			EndGameCall (playerDead);
 		} 
 
