@@ -245,5 +245,11 @@ public class PlayerController : MonoBehaviour {
 	{
 		playerControl = true;
 	}
+
+	//For getting which player it is
+	public int getPlayerNumber()
+	{
+		return playerNumber;
+	}
 		
 }

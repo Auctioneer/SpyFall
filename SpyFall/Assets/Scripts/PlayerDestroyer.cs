@@ -8,19 +8,23 @@ public class PlayerDestroyer : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D enterObj)
 	{
-		if (enterObj.gameObject.tag == "Player") 
+		GameObject whatObject = enterObj.gameObject;
+
+		if (whatObject.tag == "Player") 
 		{
+			int playerDead = whatObject.GetComponent<PlayerController> ().getPlayerNumber ();
+
 			this.enabled = false;
-			EndGameCall ();
+			EndGameCall (playerDead);
 		} 
 
 	}
 
-	void EndGameCall()
+	void EndGameCall(int playerDead)
 	{
 		if (callEndGame != null)
 		{
-			callEndGame(4);
+			callEndGame(playerDead);
 		}
 	}
 }

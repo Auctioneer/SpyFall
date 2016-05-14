@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 	public static event EndGameEvent EndGame;
 
 	//Need to make a second event for passing details to the UI canvas
-	public delegate void EndGamePlayerDetails(int playerOneScore, int playerTwoScore);
+	public delegate void EndGamePlayerDetails(int whichPlayerHit);
 	public static event EndGamePlayerDetails EndGameUI;
 
 	//Delegate stuff!
@@ -26,10 +26,11 @@ public class GameManager : MonoBehaviour {
 		PlayerDestroyer.callEndGame -= EndGameInit;
 	}
 
-	void EndGameInit(int test)
+	void EndGameInit(int playerHit)
 	{
-		print ("EndGameInit called " + test);
+		print ("EndGameInit called " + playerHit);
 		EndGameBroadcast ();
+		EndGameUIBroadcast (playerHit);
 
 	}
 
@@ -50,6 +51,15 @@ public class GameManager : MonoBehaviour {
 			gameEnded = true;
 		}		
 			
+	}
+
+	//Takes and passes a parameter for the UI
+	void EndGameUIBroadcast(int deadPlayer)
+	{
+		if (EndGameUI != null)
+		{
+			EndGameUI (deadPlayer);
+		}
 	}
 
 	void EndGameBroadcast()

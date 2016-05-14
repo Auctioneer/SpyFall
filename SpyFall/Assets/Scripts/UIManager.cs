@@ -11,14 +11,15 @@ public class UIManager : MonoBehaviour {
 	public GameObject timer;
 
 	//Because the world needs more delegates
+	//#Bernie2016
 	void OnEnable()
 	{
-		GameManager.EndGame += UIEndGame;
+		GameManager.EndGameUI += UIEndGame;
 	}
 
 	void OnDisable()
 	{
-		GameManager.EndGame -= UIEndGame;
+		GameManager.EndGameUI -= UIEndGame;
 	}
 
 
@@ -51,12 +52,27 @@ public class UIManager : MonoBehaviour {
 	}
 
 	//End game events for user interface
-	void UIEndGame()
+	void UIEndGame(int whichPlayerHit)
+	{
+		print ("Running UI end game");
+
+		if (whichPlayerHit == null)
+		{
+			decideWinner ();
+		}
+		else
+		{
+			displayWinner (whichPlayerHit);
+		}
+
+
+	}
+
+	//Decide winner in the event of a draw
+	void decideWinner()
 	{
 		//We use this as a code for the winner in displayWinner()
 		int winID;
-
-		print ("Running UI end game");
 
 		//Right now we'll just say it's a draw until we can work out who won
 		//Note: In the event of a tie, the player with the most hits wins
@@ -68,11 +84,11 @@ public class UIManager : MonoBehaviour {
 
 		if (playerOneInt > playerTwoInt)
 		{
-			winID = 1;
+			winID = 2;
 		}
 		else if (playerTwoInt > playerOneInt)
 		{
-			winID = 2;
+			winID = 1;
 		}
 		else
 		{
@@ -84,14 +100,10 @@ public class UIManager : MonoBehaviour {
 		displayWinner(winID);
 	}
 
-
-
-
-
 	//Displays the winner text on the screen
 	void displayWinner(int winID)
 	{
-		//winID refers to which player won
+		//winID refers to which player lost
 
 
 		//0 = draw
@@ -101,10 +113,10 @@ public class UIManager : MonoBehaviour {
 			winnerText.text = "Draw!";
 			break;
 		case 1:
-			winnerText.text = "Player 1 wins!";
+			winnerText.text = "Player 2 wins!";
 			break;
 		case 2:
-			winnerText.text = "Player 2 wins!";
+			winnerText.text = "Player 1 wins!";
 			break;
 		default:
 			winnerText.text = "Well, this shouldn't have happened.";	
