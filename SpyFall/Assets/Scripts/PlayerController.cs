@@ -229,23 +229,18 @@ public class PlayerController : MonoBehaviour {
 		print ("Calling!");
 	}
 
+	//Method for giving control to players or taking it away
 	void PlayerControlOnOff()
 	{
+		//Flipcount is only here for testing - can remove later
 		flipCount++;
-
-		//if (playerControl == true)
-		//{
-	//		playerControl = false;
-	//	}
-	//	else 
-	//	{
-	//		playerControl = true;
-	//	}
 
 		playerControl = !playerControl;
 		print ("Okay, we flipped it! Count: " + flipCount);
 	}
 
+	//Runs after animation
+	//Simpler than the flip method in this case
 	void ResumeControlFromDamage()
 	{
 		playerControl = true;

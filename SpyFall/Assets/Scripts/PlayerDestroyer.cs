@@ -3,15 +3,15 @@ using System.Collections;
 
 public class PlayerDestroyer : MonoBehaviour {
 
-	public delegate void callGameManagerEnd();
+	public delegate void callGameManagerEnd(int test);
 	public static event callGameManagerEnd callEndGame;
 
 	void OnTriggerEnter2D(Collider2D enterObj)
 	{
 		if (enterObj.gameObject.tag == "Player") 
 		{
-			EndGameCall ();
 			this.enabled = false;
+			EndGameCall ();
 		} 
 
 	}
@@ -20,7 +20,7 @@ public class PlayerDestroyer : MonoBehaviour {
 	{
 		if (callEndGame != null)
 		{
-			callEndGame();
+			callEndGame(4);
 		}
 	}
 }

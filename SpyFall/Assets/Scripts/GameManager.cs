@@ -5,10 +5,15 @@ public class GameManager : MonoBehaviour {
 
 	public bool gameEnded;
 
-	public GameObject timer;
+	//public GameObject timer;
+	public GameObject uiCanvas;
 
 	public delegate void EndGameEvent();
 	public static event EndGameEvent EndGame;
+
+	//Need to make a second event for passing details to the UI canvas
+	public delegate void EndGamePlayerDetails(int playerOneScore, int playerTwoScore);
+	public static event EndGamePlayerDetails EndGameUI;
 
 	//Delegate stuff!
 	void OnEnable()
@@ -21,12 +26,13 @@ public class GameManager : MonoBehaviour {
 		PlayerDestroyer.callEndGame -= EndGameInit;
 	}
 
-	void EndGameInit()
+	void EndGameInit(int test)
 	{
-		print ("EndGameInit called");
+		print ("EndGameInit called " + test);
 		EndGameBroadcast ();
 
 	}
+
 
 
 	//Called before start and even if it's not enabled
@@ -38,8 +44,8 @@ public class GameManager : MonoBehaviour {
 
 	void Update()
 	{
-		//Check to see if the timer has run down
-		if ((timer.GetComponent<TimerScript>().getTime () == 0.0f) && (gameEnded == false))
+		//Check to see if the timer has run down, via the UI Manager
+		if ((uiCanvas.GetComponent<UIManager>().getTime() == 0.0f) && (gameEnded == false))
 		{
 			gameEnded = true;
 		}		
