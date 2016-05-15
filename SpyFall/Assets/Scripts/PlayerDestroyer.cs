@@ -10,6 +10,9 @@ public class PlayerDestroyer : MonoBehaviour {
 	{
 		GameObject whatObject = enterObj.gameObject;
 
+		//Might need to write a case later on for both players hitting the top
+		//Don't worry though, could just do a brief check of their y positions in GameManager once a player hits
+
 		if (whatObject.tag == "Player") 
 		{
 			int playerDead = whatObject.GetComponent<PlayerController> ().getPlayerNumber ();

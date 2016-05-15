@@ -19,11 +19,13 @@ public class GameManager : MonoBehaviour {
 	void OnEnable()
 	{
 		PlayerDestroyer.callEndGame += EndGameInit;
+		UIManager.EndGameTimer += EndGameInit;
 	}
 
 	void OnDisable()
 	{
 		PlayerDestroyer.callEndGame -= EndGameInit;
+		UIManager.EndGameTimer -= EndGameInit;
 	}
 
 	void EndGameInit(int playerHit)
@@ -48,17 +50,16 @@ public class GameManager : MonoBehaviour {
 		// I don't think we should check time every frame.
 		//Just get UI manager to say when it's at zero
 
-		print ("penis");
-		float currentTime = uiCanvas.GetComponent<UIManager> ().getTime ();
+		//float currentTime = uiCanvas.GetComponent<UIManager> ().getTime ();
 
 		//Check to see if the timer has run down, via the UI Manager
 		//if ((uiCanvas.GetComponent<UIManager>().getTime() == 0.0f) && (gameEnded == false))
-		if (currentTime < 0.2f)
-		{
-			print ("SHOOP DA WOOP THE TIMER'S AT ZERO!");
-			gameEnded = true;
-			EndGameInit (-1);
-		}		
+		//if (currentTime < 0.2f)
+		//{
+		//	print ("SHOOP DA WOOP THE TIMER'S AT ZERO!");
+		//	gameEnded = true;
+		//	EndGameInit (-1);
+		//}		
 			
 	}
 

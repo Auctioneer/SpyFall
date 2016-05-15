@@ -10,6 +10,11 @@ public class UIManager : MonoBehaviour {
 
 	public GameObject timer;
 
+	//Need to make a second event for passing details to the UI canvas
+	public delegate void EndGameTimerZero(int negativeOne);
+	public static event EndGameTimerZero EndGameTimer;
+	bool endGameTimerBool = false;
+
 	//Because the world needs more delegates
 	//#Bernie2016
 	void OnEnable()
@@ -22,8 +27,6 @@ public class UIManager : MonoBehaviour {
 		GameManager.EndGameUI -= UIEndGame;
 	}
 
-
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -33,15 +36,35 @@ public class UIManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		print (getTime());
+		if ((endGameTimerBool == false) && (getTimeText ().Equals("0")))
+		{
+			endGameTimerBool = true;
+			endGameTimerInit ();
+		}
+	}
+
+	void endGameTimerInit()
+	{
+		if (EndGameTimer != null)
+		{
+			EndGameTimer (-1);
+		}
 	}
 
 	//Returns the current time for the GameManager
-	//MVC up this motha
+	//MVC up in this motha
 	public float getTime()
 	{
 		return timer.GetComponent<TimerScript> ().getTime ();
+	}
+
+	//Overload for string
+	public string getTimeText()
+	{
+		return timer.GetComponent<TimerScript> ().getTimerText ();
 	}
 
 	void disableAll()

@@ -56,4 +56,9 @@ public class TimerScript : MonoBehaviour {
 	{
 		return timerLength;
 	}
+
+	public string getTimerText()
+	{
+		return timerText.text;
+	}
 }
