@@ -47,19 +47,6 @@ public class GameManager : MonoBehaviour {
 
 	void Update()
 	{
-		// I don't think we should check time every frame.
-		//Just get UI manager to say when it's at zero
-
-		//float currentTime = uiCanvas.GetComponent<UIManager> ().getTime ();
-
-		//Check to see if the timer has run down, via the UI Manager
-		//if ((uiCanvas.GetComponent<UIManager>().getTime() == 0.0f) && (gameEnded == false))
-		//if (currentTime < 0.2f)
-		//{
-		//	print ("SHOOP DA WOOP THE TIMER'S AT ZERO!");
-		//	gameEnded = true;
-		//	EndGameInit (-1);
-		//}		
 			
 	}
 

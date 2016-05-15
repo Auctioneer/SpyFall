@@ -47,6 +47,7 @@ public class TimerScript : MonoBehaviour {
 		timerOn = !timerOn;
 	}
 
+	//But to be honest this seemed to work better in one instance
 	public void timerOff()
 	{
 		timerOn = false;

@@ -38,7 +38,6 @@ public class UIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		print (getTime());
 		if ((endGameTimerBool == false) && (getTimeText ().Equals("0")))
 		{
 			endGameTimerBool = true;

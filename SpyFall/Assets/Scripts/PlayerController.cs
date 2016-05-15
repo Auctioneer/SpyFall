@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
 
 	public float maxSpeed = 10f;
 	bool facingRight = true;
-	//bool attacking = false;
 
 	Rigidbody2D rb2d;
 	Animator anim;
@@ -63,8 +62,6 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (Input.GetButtonDown (attackButton))
 			{
-				//Not sure I need the bool, given the way I've written this
-				//attacking = true;
 				Attack ();
 			}
 		}
@@ -188,6 +185,7 @@ public class PlayerController : MonoBehaviour {
 	public void Die()
 	{
 		print ("We're in Die()");
+		anim.SetBool("Ground", true);
 		anim.SetTrigger ("Dead");
 	}
 		
@@ -204,24 +202,6 @@ public class PlayerController : MonoBehaviour {
 		GameManager.EndGame -= PlayerEndGame;
 		AttackTriggerScript.DisableTrigger -= EndAttack;
 	}
-
-
-	//This method should be renamed or edited
-	//void FlipPlayerControl()
-	//{
-	//	if (playerControl == true)
-	//	{
-	//		playerControl = false;
-	//		this.rb2d.velocity = Vector3.zero;
-	//		this.rb2d.gravityScale = 0;
-	//	}
-	//	else
-	//	{
-	//		playerControl = true;
-	//		this.rb2d.gravityScale = 3;
-	//	}
-			
-	//}
 
 	//Method for running the steps to end the game for all players
 	void PlayerEndGame()
@@ -249,6 +229,12 @@ public class PlayerController : MonoBehaviour {
 	public int getPlayerNumber()
 	{
 		return playerNumber;
+	}
+
+	//Removing the player character once the death animation plays
+	public void playerDestroy()
+	{
+		Destroy(this.gameObject);
 	}
 		
 }
