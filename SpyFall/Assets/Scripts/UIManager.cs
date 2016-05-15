@@ -54,9 +54,14 @@ public class UIManager : MonoBehaviour {
 	//End game events for user interface
 	void UIEndGame(int whichPlayerHit)
 	{
+		//Turn timer off
+		timer.GetComponent<TimerScript> ().timerOff ();
+
 		print ("Running UI end game");
 
-		if (whichPlayerHit == null)
+		print ("Which player hit the top: " + whichPlayerHit);
+
+		if (whichPlayerHit == -1)
 		{
 			decideWinner ();
 		}
@@ -64,7 +69,6 @@ public class UIManager : MonoBehaviour {
 		{
 			displayWinner (whichPlayerHit);
 		}
-
 
 	}
 
@@ -105,6 +109,7 @@ public class UIManager : MonoBehaviour {
 	{
 		//winID refers to which player lost
 
+		print ("Win ID = " + winID);
 
 		//0 = draw
 		switch (winID)

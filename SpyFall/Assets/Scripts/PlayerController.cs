@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour {
 	bool facingRight = true;
 	//bool attacking = false;
 
-	int flipCount = 0;
-
 	Rigidbody2D rb2d;
 	Animator anim;
 
@@ -136,7 +134,6 @@ public class PlayerController : MonoBehaviour {
 
 	//Method for when the player is hit by the other
 	//Needs to be an IEnumerator because it's a timing thing - it's a coroutine
-	//Does this need to be a coroutine though? Investigate
 	public IEnumerator playerDamage()
 	{
 		print ("in playerdamage");
@@ -187,21 +184,24 @@ public class PlayerController : MonoBehaviour {
 		StartCoroutine(playerDamage ());
 	}
 
-	void Die()
+	//Method for playing the player's death animation
+	public void Die()
 	{
+		print ("We're in Die()");
+		anim.SetTrigger ("Dead");
 	}
 		
 
 	//Delegate stuff!
 	void OnEnable()
 	{
-		GameManager.EndGame += PlayerControlOnOff;
+		GameManager.EndGame += PlayerEndGame;
 		AttackTriggerScript.DisableTrigger += EndAttack;
 	}
 
 	void OnDisable()
 	{
-		GameManager.EndGame -= PlayerControlOnOff;
+		GameManager.EndGame -= PlayerEndGame;
 		AttackTriggerScript.DisableTrigger -= EndAttack;
 	}
 
@@ -223,20 +223,19 @@ public class PlayerController : MonoBehaviour {
 			
 	//}
 
-	//Delegate is being buggy, let's see if calling it from here works
-	void callPlayerControl()
+	//Method for running the steps to end the game for all players
+	void PlayerEndGame()
 	{
-		print ("Calling!");
+		PlayerControlOnOff ();
+		this.rb2d.gravityScale = 0;
+		this.rb2d.velocity = Vector3.zero;
+
 	}
 
 	//Method for giving control to players or taking it away
 	void PlayerControlOnOff()
 	{
-		//Flipcount is only here for testing - can remove later
-		flipCount++;
-
 		playerControl = !playerControl;
-		print ("Okay, we flipped it! Count: " + flipCount);
 	}
 
 	//Runs after animation

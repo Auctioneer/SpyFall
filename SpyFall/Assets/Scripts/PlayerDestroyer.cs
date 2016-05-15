@@ -14,10 +14,14 @@ public class PlayerDestroyer : MonoBehaviour {
 		{
 			int playerDead = whatObject.GetComponent<PlayerController> ().getPlayerNumber ();
 			print ("Collided with " + playerDead);
+
+			//Play player's death animation here
+			//Better here than playercontroller because then it would run for both players
+			whatObject.GetComponent<PlayerController> ().Die ();
+
 			this.enabled = false;
-			print ("Now calling EndGameCall in PlayerDestroyer");
 			EndGameCall (playerDead);
-		} 
+		}
 
 	}
 
