@@ -4,6 +4,7 @@ using System.Collections;
 public class PlatformGenerator : MonoBehaviour {
 
 	public GameObject[] obj;
+	int[] rotationInts;
 	public bool shouldRotate;
 
 	//The gap in seconds between spawning objects
@@ -19,7 +20,21 @@ public class PlatformGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		initialiseRotationInts ();
 		StartCoroutine (initialDelay ());
+	}
+
+	void initialiseRotationInts()
+	{
+		rotationInts = new int[5];
+
+		for (int i = 0; i < 3; i++)
+		{
+			rotationInts [i] = 0;
+		}
+
+		rotationInts [3] = 20;
+		rotationInts [4] = -20;
 	}
 
 	//Delegate stuff!
@@ -41,7 +56,8 @@ public class PlatformGenerator : MonoBehaviour {
 
 		if (shouldRotate == true)
 		{
-			rotation = Quaternion.Euler (0, 0, Random.Range (-20, 20));
+			int rotationInt = rotationInts [Random.Range (0, 5)];
+			rotation = Quaternion.Euler (0, 0, rotationInt);
 		}
 		else
 		{
