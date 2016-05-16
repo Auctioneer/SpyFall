@@ -48,7 +48,6 @@ public class PlatformGenerator : MonoBehaviour {
 		GameManager.EndGame -= StopGeneration;
 	}
 
-
 	//Method to generate platforms
 	void Generate()
 	{
@@ -67,8 +66,7 @@ public class PlatformGenerator : MonoBehaviour {
 		//Create an object
 		Instantiate(obj[Random.Range (0, obj.Length)], transform.position, rotation);
 
-
-
+		//Only run this code the game manager says it should
 		if (generating == true)
 		{
 			//Method calls itself again after the interval determined by min and max

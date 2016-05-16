@@ -7,18 +7,22 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour {
 
 	//Pause panel
-	public GameObject panel;
+	public GameObject pausePanel;
 
 	//Whether the game is paused or not
 	public bool paused;
 
-
+	//Whether the options menu is visible or not
+	bool optionsOn;
 
 	// Use this for initialization
 	void Start () 
 	{
 		//Game starts unpaused
 		paused = false;
+
+		//And the options menu hidden too
+		optionsOn = false;
 	}
 	
 	// Update is called once per frame
@@ -33,7 +37,7 @@ public class PauseManager : MonoBehaviour {
 			Pause (false);
 		}
 
-		if (Input.GetButtonDown ("Cancel")) 
+		if (Input.GetButtonDown ("Cancel") && (optionsOn == false)) 
 		{
 			ChangePauseState ();
 		}
@@ -44,7 +48,7 @@ public class PauseManager : MonoBehaviour {
 		if (state == true) 
 		{
 			//Make panel appear
-			panel.SetActive (true);
+			pausePanel.SetActive (true);
 
 			//Stop time
 			Time.timeScale = 0.0f;
@@ -52,7 +56,7 @@ public class PauseManager : MonoBehaviour {
 		else 
 		{
 			//Hide panel and resume time
-			panel.SetActive (false);
+			pausePanel.SetActive (false);
 			Time.timeScale = 1.0f;
 		}
 	}
@@ -63,8 +67,21 @@ public class PauseManager : MonoBehaviour {
 		paused = !paused;
 	}
 
+	//Quit game and go to opening menu
 	public void Quit()
 	{
 		SceneManager.LoadScene ("openingmenu");
+	}
+
+	//Open the options panel
+	public void OpenOptions()
+	{
+		
+	}
+
+	//Reload the scene
+	public void RestartLevel()
+	{
+		SceneManager.LoadScene ("battlemain");
 	}
 }
