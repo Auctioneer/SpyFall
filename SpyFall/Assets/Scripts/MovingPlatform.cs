@@ -23,7 +23,8 @@ public class MovingPlatform : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 
 	}
 

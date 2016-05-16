@@ -4,6 +4,7 @@ using System.Collections;
 public class PlatformGenerator : MonoBehaviour {
 
 	public GameObject[] obj;
+	public bool shouldRotate;
 
 	//The gap in seconds between spawning objects
 	public float spawnMin = 1f;
@@ -36,8 +37,21 @@ public class PlatformGenerator : MonoBehaviour {
 	//Method to generate platforms
 	void Generate()
 	{
-		//Create an object?
-		Instantiate(obj[Random.Range (0, obj.Length)], transform.position, Quaternion.identity);
+		Quaternion rotation;
+
+		if (shouldRotate == true)
+		{
+			rotation = Quaternion.Euler (0, 0, Random.Range (-20, 20));
+		}
+		else
+		{
+			rotation = Quaternion.identity;
+		}
+
+		//Create an object
+		Instantiate(obj[Random.Range (0, obj.Length)], transform.position, rotation);
+
+
 
 		if (generating == true)
 		{
