@@ -174,8 +174,6 @@ public class PlayerController : MonoBehaviour {
 
 		//Flip player control
 		PlayerControlOnOff ();
-		//Give up player control
-		//playerControl = false;
 
 		//We can't disable the box collider because it'll fall through and we need platforms to be able to act on it
 		//So we'll make sure it can't collide with the player layer

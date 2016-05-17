@@ -8,20 +8,47 @@ public class BumperScript : MonoBehaviour {
 	public int xCo = 0;
 	public int yCo = 0;
 
-	// Use this for initialization
+	//Position of object in world
+	Vector3 location;
+
+	//Initialization
 	void Start () 
 	{
-		Vector3 location;
-
-		if (this.gameObject.name == "LeftBumper")
+		//Code for the side bumpers
+		if (this.gameObject.tag == "Bumper")
 		{
-			location = Camera.main.ScreenToWorldPoint (new Vector3 (xCo, yCo, 5));
+
+			if (this.gameObject.name == "LeftBumper")
+			{
+				location = Camera.main.ScreenToWorldPoint (new Vector3 (xCo, yCo, 5));
+			}
+			else
+			{
+				location = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width + xCo, yCo, 5));
+			}
 		}
+
+		//Code for the initial platforms the players are to stand on
+		//200 should be y co-ordinate
 		else
 		{
-			location = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width + xCo, yCo, 5));
+			if (this.gameObject.name == "LeftInitialPlatform")
+			{
+				location = Camera.main.ScreenToWorldPoint (new Vector3 ((Screen.width/2) - 100, yCo, 5));
+			}
+			else
+			{
+				location = Camera.main.ScreenToWorldPoint (new Vector3 ((Screen.width/2) + 100, yCo, 5));
+			}
+			
 		}
 		this.transform.position = location;
+	}
+
+	//Method to return locaton
+	public Vector3 getLocation()
+	{
+		return location;
 	}
 
 }

@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-
-
 	//Called before start and even if it's not enabled
 	//Good for initialising stuff, apparently!
 	void Awake()
@@ -66,5 +64,7 @@ public class GameManager : MonoBehaviour {
 			EndGame ();
 		}
 	}
+
+
 
 }
