@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 
 	Rigidbody2D rb2d;
 	Animator anim;
+	AudioSource aud;
 
 	bool grounded = false;
 	public Transform groundCheck;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb2d = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
+		aud = GetComponent<AudioSource> ();
 
 		//We start with the attackTrigger disabled
 		attackTrigger.enabled = false;
@@ -184,6 +186,8 @@ public class PlayerController : MonoBehaviour {
 	//Method for playing the player's death animation
 	public void Die()
 	{
+		aud.Play ();
+
 		print ("We're in Die()");
 		anim.SetBool("Ground", true);
 		anim.SetTrigger ("Dead");

@@ -77,6 +77,8 @@ public class openingMenuScript : MonoBehaviour {
 	//Back button within view controls to go back to main menu
 	public void HideControls()
 	{
+		controls.enabled = false;
+		EnableMainMenu ();
 	}
 
 	void DisableMainMenu()
