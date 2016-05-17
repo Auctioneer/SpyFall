@@ -14,7 +14,7 @@ public class TimerScript : MonoBehaviour {
 	void Start () 
 	{
 		//Might need to alter this stuff once we code the start of the game
-		timerOn = true;
+		timerOn = false;
 	}
 	
 	// Update is called once per frame
@@ -51,6 +51,12 @@ public class TimerScript : MonoBehaviour {
 	public void timerOff()
 	{
 		timerOn = false;
+	}
+
+	//It's just nice to know what you're setting the variable to, really
+	public void timerActive()
+	{
+		timerOn = true;
 	}
 
 	public float getTime()

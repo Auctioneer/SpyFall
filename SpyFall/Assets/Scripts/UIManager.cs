@@ -94,6 +94,12 @@ public class UIManager : MonoBehaviour {
 
 	}
 
+	//Using at the start from StartManager, to turn timer on
+	public void turnTimerOn()
+	{
+		timer.GetComponent<TimerScript> ().timerActive ();
+	}
+
 	//Decide winner in the event of a draw
 	void decideWinner()
 	{

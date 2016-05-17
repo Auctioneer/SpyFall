@@ -1,9 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menus\openingMenuScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\StartManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Menus\openingMenuScript.cs" Line="76" Column="2" />
-      <File FileName="Assets\Scripts\Menus\PauseManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\StartManager.cs" Line="38" Column="31" />
+      <File FileName="Assets\Scripts\UIManager.cs" Line="100" Column="53" />
+      <File FileName="Assets\Scripts\TimerScript.cs" Line="56" Column="70" />
+      <File FileName="Assets\Scripts\Menus\PauseManager.cs" Line="8" Column="2" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="60" Column="25" />
+      <File FileName="Assets\Scripts\BumperScript.cs" Line="53" Column="2" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="194" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
