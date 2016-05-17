@@ -31,11 +31,19 @@ public class StartManager : MonoBehaviour {
 	//Method for positioning the players - takes a few steps hence it has its own method
 	void positionPlayers()
 	{
+		int playerHeight = 13;
+
 		//Get the location of the two starting platforms
 		Vector3 platformOnePosition = platformOne.transform.position;
 		Vector3 platformTwoPosition = platformTwo.transform.position;
 		print (platformOnePosition);
 		print (platformTwoPosition);
+
+		Vector3 playerOnePosition = new Vector3 (platformOnePosition.x, playerHeight);
+		playerOne.transform.position = playerOnePosition;
+
+		Vector3 playerTwoPosition = new Vector3 (platformTwoPosition.x, playerHeight);
+		playerTwo.transform.position = playerTwoPosition;
 
 	}
 
