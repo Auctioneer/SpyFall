@@ -7,10 +7,13 @@ public class GameModel : MonoBehaviour {
 
 	int playerTwoWins = 0;
 
+	int playerOneHits = 0;
+
+	int playerTwoHits = 0;
+
 	//Stop this from being destroyed between rounds
 	void Awake()
 	{
-		print ("Sup I awake!");
 		DontDestroyOnLoad (transform.gameObject);
 	}
 
@@ -33,6 +36,12 @@ public class GameModel : MonoBehaviour {
 		}
 	}
 
+	//Add to a running total of attacks against the other player
+	public void addHits (int player, int hits)
+	{
+		
+	}
+
 	//Return player one counter
 	public int getPlayerOneWins()
 	{
@@ -43,6 +52,18 @@ public class GameModel : MonoBehaviour {
 	public int getPlayerTwoWins()
 	{
 		return playerTwoWins;
+	}
+
+	//Return player one hits
+	public int getPlayerOneHits()
+	{
+		return playerOneHits;
+	}
+
+	//Return player two hits
+	public int getPlayerTwoHits()
+	{
+		return playerTwoHits;
 	}
 
 	//Resets all the details about the game for when the player restarts
