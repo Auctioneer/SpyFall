@@ -25,7 +25,10 @@ public class MovingPlatform : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-
+		if (this.gameObject.transform.rotation.z != 0)
+		{
+			verticalSpeed = verticalSpeed + 6;
+		}
 	}
 
 	// Update is called once per frame
