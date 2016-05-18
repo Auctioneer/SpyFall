@@ -6,6 +6,12 @@ public class PlayerDestroyer : MonoBehaviour {
 	public delegate void callGameManagerEnd(int test);
 	public static event callGameManagerEnd callEndGame;
 
+	void Start()
+	{
+		Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height, 5));
+		this.transform.Translate (position);
+	}
+
 	void OnTriggerEnter2D(Collider2D enterObj)
 	{
 		GameObject whatObject = enterObj.gameObject;

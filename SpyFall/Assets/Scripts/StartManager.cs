@@ -22,43 +22,56 @@ public class StartManager : MonoBehaviour {
 		//Stop a few things here
 		playerDestroyer.SetActive (false);
 		platformGenerators.SetActive (false);
-		//BeginTheBegin ();
+		UICanvas.GetComponent<UIManager> ().hideGameTimer ();
 
 		//Position the players appropriately
 		positionPlayers();
+
+		//Get the countdown timer going
+		doCountdown();
 	}
 
 	//Method for positioning the players - takes a few steps hence it has its own method
 	void positionPlayers()
 	{
-		int playerHeight = 13;
-
+		
 		//Get the location of the two starting platforms
 		Vector3 platformOnePosition = platformOne.transform.position;
 		Vector3 platformTwoPosition = platformTwo.transform.position;
-		print (platformOnePosition);
-		print (platformTwoPosition);
 
-		Vector3 playerOnePosition = new Vector3 (platformOnePosition.x, playerHeight);
+		//And the player destroyer, which they'll fall from
+		Vector3 playerDestPos = playerDestroyer.transform.position;
+
+		//Place the players above the platforms and have them drop
+		Vector3 playerOnePosition = new Vector3 (platformOnePosition.x, playerDestPos.y);
 		playerOne.transform.position = playerOnePosition;
 
-		Vector3 playerTwoPosition = new Vector3 (platformTwoPosition.x, playerHeight);
+		Vector3 playerTwoPosition = new Vector3 (platformTwoPosition.x, playerDestPos.y);
 		playerTwo.transform.position = playerTwoPosition;
 
 	}
 
-
-	// Update is called once per frame
-	void Update () 
+	//Get that timer working
+	void doCountdown()
 	{
-		
+		//StartSequence() runs the countdown timer
+		UICanvas.GetComponent<UIManager> ().StartSequence ();
 	}
 
-	//Do countdown
-	//IEnumerator Countdown()
-	//{
-		
-	//}
+
+	//Delegate stuff for when the initial countdown timer finishes
+	void OnEnable()
+	{
+		UIManager.StartGame += BeginTheBegin;
+	}
+
+	void OnDisable()
+	{
+		UIManager.StartGame -= BeginTheBegin;
+	}
+
+
+
 
 	//Life's rich demand creates supply in the hand of the power
 	void BeginTheBegin()
@@ -69,7 +82,14 @@ public class StartManager : MonoBehaviour {
 		platformOne.GetComponent<MovingPlatform> ().enabled = true;
 		platformTwo.GetComponent<MovingPlatform> ().enabled = true;
 
+		//Enable the game timer
+		UICanvas.GetComponent<UIManager>().showGameTimer();
+
 		//Start the game's timer
 		UICanvas.GetComponent<UIManager> ().turnTimerOn ();
+
+		//Disable the countdown timer
+		UICanvas.GetComponent<UIManager>().hideStartTimer();
+
 	}
 }

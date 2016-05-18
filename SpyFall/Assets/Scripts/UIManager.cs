@@ -9,11 +9,18 @@ public class UIManager : MonoBehaviour {
 	public Text winnerText;
 
 	public GameObject timer;
+	public GameObject startTimer;
 
 	//Need to make a second event for passing details to the UI canvas
 	public delegate void EndGameTimerZero(int negativeOne);
 	public static event EndGameTimerZero EndGameTimer;
+
+	//Telling the Start Manager the game is starting
+	public delegate void StartGameTimerZero();
+	public static event StartGameTimerZero StartGame;
+
 	bool endGameTimerBool = false;
+	bool startGameTimerBool = false;
 
 	//Because the world needs more delegates
 	//#Bernie2016
@@ -43,6 +50,12 @@ public class UIManager : MonoBehaviour {
 			endGameTimerBool = true;
 			endGameTimerInit ();
 		}
+		else if ((startGameTimerBool == false) && (getStartTimeText().Equals("0")))
+		{
+			startGameTimerBool = true;
+			startGameInit ();
+
+		}
 	}
 
 	void endGameTimerInit()
@@ -53,6 +66,14 @@ public class UIManager : MonoBehaviour {
 		}
 	}
 
+	void startGameInit()
+	{
+		if (StartGame != null)
+		{
+			StartGame();
+		}
+	}
+
 	//Returns the current time for the GameManager
 	//MVC up in this motha
 	public float getTime()
@@ -60,12 +81,20 @@ public class UIManager : MonoBehaviour {
 		return timer.GetComponent<TimerScript> ().getTime ();
 	}
 
-	//Overload for string
+	//Get time in string form
 	public string getTimeText()
 	{
 		return timer.GetComponent<TimerScript> ().getTimerText ();
 	}
 
+	//Get start timer in string form
+	public string getStartTimeText()
+	{
+		return startTimer.GetComponent<TimerScript> ().getTimerText ();
+	}
+
+	//Get rid of everything
+	//Well, not quite everything
 	void disableAll()
 	{
 		playerOneHits.enabled = false;
@@ -158,4 +187,31 @@ public class UIManager : MonoBehaviour {
 
 		winnerText.enabled = true;
 	}
+
+
+	//Start sequence countdown
+	public void StartSequence()
+	{
+		startTimer.GetComponent<TimerScript> ().timerActive ();
+	}
+
+	//Hide the starting time after game start
+	public void hideStartTimer()
+	{
+		startTimer.GetComponent<TimerScript> ().hideTimer ();
+	}
+
+	//Hide the game timer until game start
+	public void hideGameTimer()
+	{
+		timer.GetComponent<TimerScript> ().hideTimer ();
+	}
+
+	public void showGameTimer()
+	{
+		timer.GetComponent<TimerScript> ().showTimer ();
+	}
+
+
+
 }

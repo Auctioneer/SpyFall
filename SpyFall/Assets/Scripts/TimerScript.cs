@@ -22,7 +22,6 @@ public class TimerScript : MonoBehaviour {
 	{
 		//If the timer isn't 0, count down
 		if (!timerLength.ToString("0").Equals("0") && (timerOn == true))
-		//if (timerOn == true)
 		{
 			//Timer needs to count down every second in real time
 			//This code maps it to real time
@@ -31,14 +30,7 @@ public class TimerScript : MonoBehaviour {
 			//Format this into a string - no decimals
 			timerText.text = timerLength.ToString ("0");
 		}
-		//else
-		//{
-			//Stop the timer and disable the script (this leaves the UI timer at 0)
-			//timerLength = 0.0f;
-			//timerOnOff ();
-		//}
 
-		//print (timerLength);
 	}
 
 	//Switch timer state (can use this when the game ends prematurely)
@@ -59,13 +51,27 @@ public class TimerScript : MonoBehaviour {
 		timerOn = true;
 	}
 
+	//Return current time
 	public float getTime()
 	{
 		return timerLength;
 	}
 
+	//Get the current time in text form (also rounded)
 	public string getTimerText()
 	{
 		return timerText.text;
+	}
+
+	//Hide the game timer
+	public void hideTimer()
+	{
+		this.gameObject.SetActive (false);
+	}
+
+	//Show the timer
+	public void showTimer()
+	{
+		this.gameObject.SetActive (true);
 	}
 }
