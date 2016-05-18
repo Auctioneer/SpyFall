@@ -6,10 +6,25 @@ public class PlayerDestroyer : MonoBehaviour {
 	public delegate void callGameManagerEnd(int test);
 	public static event callGameManagerEnd callEndGame;
 
+	//We need this to set the position of playerDestroyer relative to this
+	public GameObject platformDestroyer;
+
 	void Start()
 	{
-		Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height, 5));
-		this.transform.Translate (position);
+		Vector3 platformDestroyerVec = platformDestroyer.GetComponent<PlatformDestroyer> ().getPosition ();
+
+		//Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, Screen.height - 600, 5));
+		//this.transform.Translate (position);
+
+		print (platformDestroyerVec);
+
+		//Vector3 pdPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, platformDestroyerVec.y, 5));
+		Vector3 pdPos = new Vector3(Screen.width / 2, platformDestroyerVec.y - 2, 5);
+
+		//this.transform.position = pdPos;
+
+		print (pdPos);
+
 	}
 
 	void OnTriggerEnter2D(Collider2D enterObj)

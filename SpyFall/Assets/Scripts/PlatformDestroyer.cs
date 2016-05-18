@@ -13,5 +13,10 @@ public class PlatformDestroyer : MonoBehaviour {
 		}
 	}
 
+	public Vector3 getPosition()
+	{
+		return this.gameObject.transform.position;
+	}
+
 
 }
