@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		gameDetails = GameObject.Find ("GameDetails");
+
 		//We only display the winner when the game is actually won
 		winnerText.enabled = false;
 
