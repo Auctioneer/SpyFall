@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
 	public Text playerOneHits;
 	public Text playerTwoHits;
 	public Text winnerText;
+
+	//For total wins across rounds
+	public Text playerOneWins;
+	public Text playerTwoWins;
+	public GameObject gameDetails;
 
 	public GameObject timer;
 	public GameObject startTimer;
@@ -39,6 +45,11 @@ public class UIManager : MonoBehaviour {
 	{
 		//We only display the winner when the game is actually won
 		winnerText.enabled = false;
+
+		//Update the win counts for each player
+		playerOneWins.text = gameDetails.GetComponent<GameModel>().getPlayerOneWins().ToString();
+		print (playerOneWins);
+		playerTwoWins.text = gameDetails.GetComponent<GameModel>().getPlayerTwoWins().ToString();
 
 	}
 	
@@ -121,6 +132,9 @@ public class UIManager : MonoBehaviour {
 			displayWinner (whichPlayerHit);
 		}
 
+		//Do a check then run this if either win count is less than 5
+		StartCoroutine (delayThenGameRestart());
+
 	}
 
 	//Using at the start from StartManager, to turn timer on
@@ -159,7 +173,8 @@ public class UIManager : MonoBehaviour {
 		print ("WinID = " + winID);
 
 		displayWinner(winID);
-	}
+
+		}
 
 	//Displays the winner text on the screen
 	void displayWinner(int winID)
@@ -185,6 +200,9 @@ public class UIManager : MonoBehaviour {
 			break;
 		}
 
+		print ("Gonna add");
+		//Add it to the GameManager win count
+		gameDetails.GetComponent<GameModel> ().addToWinCount (winID);
 		winnerText.enabled = true;
 	}
 
@@ -207,11 +225,41 @@ public class UIManager : MonoBehaviour {
 		timer.GetComponent<TimerScript> ().hideTimer ();
 	}
 
+	//Show the timer upon ggame start
 	public void showGameTimer()
 	{
 		timer.GetComponent<TimerScript> ().showTimer ();
 	}
 
+	//Method to add to GameDetails' player score
+	void addToPlayerScore(int whichPlayer)
+	{
+		gameDetails.GetComponent<GameModel> ().addToWinCount (whichPlayer);
+	}
 
+	//Run this just before reloading the level
+	//Only do this if both scores are less than 5 - do check before calling method
+	IEnumerator delayThenGameRestart()
+	{
+		print ("Inside the coroutine");
+
+		//Two second delay
+		yield return new WaitForSeconds (2.0f);
+
+		//Reload the level
+		SceneManager.LoadScene("battlemain");
+	}
+
+	//Run when a player hits 5 wins
+	IEnumerator delayThenGameEnd()
+	{
+		print ("Inside the coroutine");
+
+		//Two second delay
+		yield return new WaitForSeconds (2.0f);
+
+		//Go to end game screen
+		SceneManager.LoadScene("endgame");
+	}
 
 }
