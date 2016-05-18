@@ -27,6 +27,9 @@ public class StartManager : MonoBehaviour {
 		//Position the players appropriately
 		positionPlayers();
 
+		//Turn off player control
+		turnOffOnPlayerControl();
+
 		//Get the countdown timer going
 		doCountdown();
 	}
@@ -49,6 +52,16 @@ public class StartManager : MonoBehaviour {
 		Vector3 playerTwoPosition = new Vector3 (platformTwoPosition.x, playerDestPos.y);
 		playerTwo.transform.position = playerTwoPosition;
 
+		//Player two needs to be facing in the opposite direction
+		playerTwo.GetComponent<PlayerController>().Flip();
+
+	}
+
+	//Turn off/on player control
+	void turnOffOnPlayerControl()
+	{
+		playerOne.GetComponent<PlayerController> ().PlayerControlOnOff ();
+		playerTwo.GetComponent<PlayerController> ().PlayerControlOnOff ();
 	}
 
 	//Get that timer working
@@ -71,8 +84,6 @@ public class StartManager : MonoBehaviour {
 	}
 
 
-
-
 	//Life's rich demand creates supply in the hand of the power
 	void BeginTheBegin()
 	{
@@ -91,5 +102,7 @@ public class StartManager : MonoBehaviour {
 		//Disable the countdown timer
 		UICanvas.GetComponent<UIManager>().hideStartTimer();
 
+		//Players can move
+		turnOffOnPlayerControl();
 	}
 }

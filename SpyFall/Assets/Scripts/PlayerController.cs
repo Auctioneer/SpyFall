@@ -77,8 +77,9 @@ public class PlayerController : MonoBehaviour {
 			print (playerControl);
 		}
 
-		if (playerControl == true)
-		{
+		//NOTE: Moved this down there because they weren't landing on platforms at the start
+		//if (playerControl == true)
+		//{
 			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
 			anim.SetBool ("Ground", grounded);
@@ -88,7 +89,8 @@ public class PlayerController : MonoBehaviour {
 
 			anim.SetFloat ("verticalSpeed", rb2d.velocity.y);
 
-
+		if (playerControl == true)
+		{
 			float move = Input.GetAxis (horizontalControl);
 
 			anim.SetFloat ("speed", Mathf.Abs (move));
@@ -103,7 +105,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	//Method to flip the player character
-	void Flip()
+	public void Flip()
 	{
 		facingRight = !facingRight;
 		//Vector3 Scale = transform.localScale;
@@ -215,7 +217,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	//Method for giving control to players or taking it away
-	void PlayerControlOnOff()
+	public void PlayerControlOnOff()
 	{
 		playerControl = !playerControl;
 	}
