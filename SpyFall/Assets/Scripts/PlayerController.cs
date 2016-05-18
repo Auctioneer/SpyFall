@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 	public float maxSpeed = 10f;
 	bool facingRight = true;
 
+	GameObject gameDetails;
+
 	Rigidbody2D rb2d;
 	Animator anim;
 	AudioSource aud;
@@ -45,6 +47,9 @@ public class PlayerController : MonoBehaviour {
 
 		//We start with the attackTrigger disabled
 		attackTrigger.enabled = false;
+
+		//Find game details object
+		gameDetails = GameObject.Find("GameDetails");
 	}
 
 	// Update is called once per frame
@@ -64,7 +69,10 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (Input.GetButtonDown (attackButton))
 			{
-				Attack ();
+				if (attackTrigger != null)
+				{
+					Attack ();
+				}
 			}
 		}
 	}
@@ -211,6 +219,10 @@ public class PlayerController : MonoBehaviour {
 	void PlayerEndGame()
 	{
 		PlayerControlOnOff ();
+
+		//Add the hits to the overall tally
+		gameDetails.GetComponent<GameModel>().addHits(playerNumber, hitCounter);
+
 		this.rb2d.gravityScale = 0;
 		this.rb2d.velocity = Vector3.zero;
 

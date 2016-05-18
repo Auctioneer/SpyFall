@@ -39,7 +39,14 @@ public class GameModel : MonoBehaviour {
 	//Add to a running total of attacks against the other player
 	public void addHits (int player, int hits)
 	{
-		
+		if (player == 1)
+		{
+			playerOneHits = playerOneHits + hits;
+		}
+		else if (player == 2)
+		{
+			playerTwoHits = playerTwoHits + hits;
+		}
 	}
 
 	//Return player one counter
@@ -71,6 +78,8 @@ public class GameModel : MonoBehaviour {
 	{
 		playerOneWins = 0;
 		playerTwoWins = 0;
+		playerOneHits = 0;
+		playerTwoHits = 0;
 	}
 
 

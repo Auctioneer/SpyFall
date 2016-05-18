@@ -11,15 +11,20 @@ public class AttackTriggerScript : MonoBehaviour {
 	//Destroys every object it touches
 	void OnTriggerEnter2D(Collider2D enterObject)
 	{
-		//If statement there just in case any of the UI elements overlap above the canvas
-		if (enterObject.tag == "Player")
+		if (enterObject != null)
 		{
-			//Call the player's take damage function
-			enterObject.gameObject.GetComponent<PlayerController>().TakeDamage();
+			//If statement there just in case any of the UI elements overlap above the canvas
+			if (enterObject.tag == "Player")
+			{
+				if (enterObject.gameObject.GetComponent<PlayerController> () != null)
+				{
+					//Call the player's take damage function
+					enterObject.gameObject.GetComponent<PlayerController> ().TakeDamage ();
 
-			//Then disable both the players' attack triggers
-			EndAttack();
-
+					//Then disable both the players' attack triggers
+					EndAttack ();
+				}
+			}
 		}
 	}
 

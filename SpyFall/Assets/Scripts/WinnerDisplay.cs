@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WinnerDisplay : MonoBehaviour {
 
@@ -59,6 +60,12 @@ public class WinnerDisplay : MonoBehaviour {
 	{
 		playerOneHitText.text = "Hits: " + playerOneHits;
 		playerTwoHitText.text = "Hits: " + playerTwoHits;
+	}
+
+	public void clickHome()
+	{
+		gameDetails.GetComponent<GameModel> ().resetAll ();
+		SceneManager.LoadScene ("openingmenu");
 	}
 
 }

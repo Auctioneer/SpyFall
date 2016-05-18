@@ -249,7 +249,7 @@ public class UIManager : MonoBehaviour {
 		timer.GetComponent<TimerScript> ().hideTimer ();
 	}
 
-	//Show the timer upon ggame start
+	//Show the timer upon game start
 	public void showGameTimer()
 	{
 		timer.GetComponent<TimerScript> ().showTimer ();
