@@ -14,16 +14,11 @@ public class GameModel : MonoBehaviour {
 		DontDestroyOnLoad (transform.gameObject);
 	}
 
-	//On load battlemain, update text scores
+	//Might need to use this to destroy the object on the win screen
 	//void OnLevelWasLoaded(int level)
 	//{
 		
 	//}
-
-	void Update()
-	{
-		print (playerTwoWins);
-	}
 
 	//Add to player wins
 	public void addToWinCount(int player)

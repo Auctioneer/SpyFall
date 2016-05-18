@@ -134,9 +134,31 @@ public class UIManager : MonoBehaviour {
 			displayWinner (whichPlayerHit);
 		}
 
-		//Do a check then run this if either win count is less than 5
-		StartCoroutine (delayThenGameRestart());
+		//If nobody has reached 5 points
+		if (checkForWinner() == false)
+		{
+			//Next round
+			StartCoroutine (delayThenGameRestart ());
+		}
+		else
+		{
+			//Else end game
+			StartCoroutine (delayThenGameEnd ());
+		}
 
+	}
+
+	//Check at the end of every round to see if someone reached five hits first
+	bool checkForWinner()
+	{
+		if ((gameDetails.GetComponent<GameModel>().getPlayerOneWins() == 5) || (gameDetails.GetComponent<GameModel>().getPlayerTwoWins() == 5))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	//Using at the start from StartManager, to turn timer on
