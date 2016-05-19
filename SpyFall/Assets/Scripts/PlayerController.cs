@@ -84,10 +84,6 @@ public class PlayerController : MonoBehaviour {
 		{
 			print (playerControl);
 		}
-
-		//NOTE: Moved this down there because they weren't landing on platforms at the start
-		//if (playerControl == true)
-		//{
 			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
 			anim.SetBool ("Ground", grounded);
@@ -130,6 +126,10 @@ public class PlayerController : MonoBehaviour {
 
 		//Play attack animation
 		anim.SetTrigger ("Attack");
+
+		//Will this solve the animation problem?
+		//anim.Play ("punch");
+		//No
 
 	}
 		
