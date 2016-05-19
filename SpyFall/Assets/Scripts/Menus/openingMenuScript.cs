@@ -14,7 +14,6 @@ public class openingMenuScript : MonoBehaviour {
 	//Canvases
 	public Canvas startMenu;
 	public Canvas quitMenu;
-	public Canvas controls;
 
 	//Initialise
 	void Start () 
@@ -22,13 +21,13 @@ public class openingMenuScript : MonoBehaviour {
 		//Get components from hierarchy with respective names
 		startMenu = startMenu.GetComponent<Canvas> ();
 		quitMenu = quitMenu.GetComponent<Canvas> ();
-		controls = controls.GetComponent<Canvas> ();
+		//controls = controls.GetComponent<Canvas> ();
 
 		//Quit should not be visible until the quit button is pressed
 		quitMenu.enabled = false;
 
 		//Neither should the contols window
-		controls.enabled = false;
+		//controls.enabled = false;
 
 		spyFallText = spyFallText.GetComponent<Text> ();
 		playText = playText.GetComponent<Button> ();
@@ -70,15 +69,9 @@ public class openingMenuScript : MonoBehaviour {
 	//Show control scheme
 	public void ViewControls ()
 	{
-		controls.enabled = true;
-		DisableMainMenu ();
-	}
-
-	//Back button within view controls to go back to main menu
-	public void HideControls()
-	{
-		controls.enabled = false;
-		EnableMainMenu ();
+		//controls.enabled = true;
+		//DisableMainMenu ();
+		SceneManager.LoadScene("controlsscene");
 	}
 
 	void DisableMainMenu()
