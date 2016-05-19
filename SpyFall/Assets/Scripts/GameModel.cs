@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameModel : MonoBehaviour {
 
+	public static GameModel clone;
+
 	int playerOneWins = 0;
 
 	int playerTwoWins = 0;
@@ -14,7 +16,16 @@ public class GameModel : MonoBehaviour {
 	//Stop this from being destroyed between rounds
 	void Awake()
 	{
-		DontDestroyOnLoad (transform.gameObject);
+		//Destroy duplicates of this object
+		if (clone)
+		{
+			DestroyImmediate (gameObject);
+		}
+		else
+		{
+			DontDestroyOnLoad (transform.gameObject);
+			clone = this;
+		}
 	}
 
 	//Might need to use this to destroy the object on the win screen

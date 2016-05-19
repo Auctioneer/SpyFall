@@ -34,11 +34,11 @@ public class BumperScript : MonoBehaviour {
 		{
 			if (this.gameObject.name == "LeftInitialPlatform")
 			{
-				location = Camera.main.ScreenToWorldPoint (new Vector3 ((Screen.width/2) - 100, yCo, 5));
+				location = Camera.main.ScreenToWorldPoint (new Vector3 ((Screen.width/2) - xCo, yCo, 5));
 			}
 			else
 			{
-				location = Camera.main.ScreenToWorldPoint (new Vector3 ((Screen.width/2) + 100, yCo, 5));
+				location = Camera.main.ScreenToWorldPoint (new Vector3 ((Screen.width/2) + xCo, yCo, 5));
 			}
 			
 		}
