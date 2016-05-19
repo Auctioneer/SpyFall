@@ -183,7 +183,8 @@ public class PlayerController : MonoBehaviour {
 		UpdateHits();
 
 		//Flip player control
-		PlayerControlOnOff ();
+		//PlayerControlOnOff ();
+		PlayerControlOff();
 
 		//We can't disable the box collider because it'll fall through and we need platforms to be able to act on it
 		//So we'll make sure it can't collide with the player layer
@@ -218,7 +219,7 @@ public class PlayerController : MonoBehaviour {
 	//Method for running the steps to end the game for all players
 	void PlayerEndGame()
 	{
-		PlayerControlOnOff ();
+		PlayerControlOff ();
 
 		//Add the hits to the overall tally
 		gameDetails.GetComponent<GameModel>().addHits(playerNumber, hitCounter);
@@ -234,11 +235,22 @@ public class PlayerController : MonoBehaviour {
 		playerControl = !playerControl;
 	}
 
+	void PlayerControlOff()
+	{
+		playerControl = false;
+	}
+
+	void PlayerControlOn()
+	{
+		playerControl = true;
+	}
+
 	//Runs after animation
 	//Simpler than the flip method in this case
 	void ResumeControlFromDamage()
 	{
 		playerControl = true;
+		Debug.Log ("Resume control from damage");
 	}
 
 	//For getting which player it is
@@ -252,5 +264,45 @@ public class PlayerController : MonoBehaviour {
 	{
 		Destroy(this.gameObject);
 	}
+
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+
+
+
+	//Right, we need to sort this attack thing out.
+	public void newTakeDamage()
+	{
+		//We stop the player from being able to move
+		PlayerControlOff ();
+
+		//We run the hurt animation
+		anim.SetTrigger("Damage");
+
+		//Move the player to the 'hurt' layer so the other player can pass through them
+		this.gameObject.layer = LayerMask.NameToLayer("HurtPlayer");
+
+	}
+
+	public void newRecoverFromDamage()
+	{
+		//Resume playerControl
+		PlayerControlOn ();
+
+		//Move the player to the 'hurt' layer so the other player can pass through them
+		this.gameObject.layer = LayerMask.NameToLayer("Player");
+
+	}
+
+
+
 		
 }
