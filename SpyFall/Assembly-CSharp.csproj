@@ -46,10 +46,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AttackTriggerScript.cs" />
+     <Compile Include="Assets\Scripts\BattleMusicScript.cs" />
      <Compile Include="Assets\Scripts\BumperScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameModel.cs" />
      <Compile Include="Assets\Scripts\Menus\ControlMenuScript.cs" />
+     <Compile Include="Assets\Scripts\Menus\EndImageScript.cs" />
      <Compile Include="Assets\Scripts\Menus\PauseManager.cs" />
      <Compile Include="Assets\Scripts\Menus\openingMenuScript.cs" />
      <Compile Include="Assets\Scripts\MovingPlatform.cs" />

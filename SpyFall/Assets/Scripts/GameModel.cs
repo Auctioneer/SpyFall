@@ -13,6 +13,8 @@ public class GameModel : MonoBehaviour {
 
 	int playerTwoHits = 0;
 
+	bool musicPlaying = false;
+
 	//Stop this from being destroyed between rounds
 	void Awake()
 	{
@@ -28,11 +30,16 @@ public class GameModel : MonoBehaviour {
 		}
 	}
 
-	//Might need to use this to destroy the object on the win screen
-	//void OnLevelWasLoaded(int level)
-	//{
+	public void musicStarted()
+	{
+		musicPlaying = true;
+	}
+
+	public bool isMusicPlaying()
+	{
+		return musicPlaying;
+	}
 		
-	//}
 
 	//Add to player wins
 	public void addToWinCount(int player)

@@ -16,9 +16,21 @@ public class StartManager : MonoBehaviour {
 
 	public GameObject playerDestroyer;
 
+	//GameObject gameDetails;
+
 	// Use this for initialization
 	void Start () 
 	{
+		//gameDetails = GameObject.Find ("GameDetails");
+
+		//If the background music isn't already playing, we tell it to start
+		//BattleMusicBackground will take its cue from this
+		//if (gameDetails.GetComponent<GameModel> ().isMusicPlaying () == false)
+		//{
+			//Play tunes
+		//	gameDetails.GetComponent<GameModel>().musicStarted();
+		//}
+
 		//Stop a few things here
 		playerDestroyer.SetActive (false);
 		platformGenerators.SetActive (false);
@@ -32,6 +44,7 @@ public class StartManager : MonoBehaviour {
 
 		//Get the countdown timer going
 		doCountdown();
+			
 	}
 
 	//Method for positioning the players - takes a few steps hence it has its own method
