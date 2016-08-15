@@ -47,10 +47,12 @@ public class GameModel : MonoBehaviour {
 		if (player == 2)
 		{
 			playerOneWins++;
+			print ("Player 1 wins: " + playerOneWins);
 		}
 		else if (player == 1)
 		{
 			playerTwoWins++;
+			print ("Player 2 wins: " + playerTwoWins);
 		}
 	}
 

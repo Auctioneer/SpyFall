@@ -266,14 +266,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	//Method for returning the height of the player
+	//Used for comparing the player positions at the end of the game (in UIManager)
+	public float getYPosition()
+	{
+		float y = this.gameObject.transform.position.y;
+		return y;
+	}
 
 
 

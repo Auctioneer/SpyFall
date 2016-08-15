@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
+	public GameObject playerOne;
+	public GameObject playerTwo;
+
 	public Text playerOneHits;
 	public Text playerTwoHits;
 	public Text winnerText;
@@ -125,7 +128,18 @@ public class UIManager : MonoBehaviour {
 
 		print ("Which player hit the top: " + whichPlayerHit);
 
-		if (whichPlayerHit == -1)
+		//At this point we need to see if the other player has touched the top at the same time
+		//If they have, then we need to decide the winner
+		bool bothPlayersTouchingTop = false;
+
+
+		//BUG - GAME NO LONGER ENDS THANKS TO THIS
+		if (playerOne.GetComponent<PlayerController>().getYPosition() == playerTwo.GetComponent<PlayerController>().getYPosition())
+		{
+			bothPlayersTouchingTop = true;
+		}
+
+		if ((whichPlayerHit == -1) || (bothPlayersTouchingTop == true))
 		{
 			decideWinner ();
 		}
