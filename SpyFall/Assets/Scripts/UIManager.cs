@@ -238,7 +238,6 @@ public class UIManager : MonoBehaviour {
 			break;
 		}
 
-		print ("Gonna add");
 		//Add it to the GameManager win count
 		gameDetails.GetComponent<GameModel> ().addToWinCount (winID);
 		winnerText.enabled = true;
