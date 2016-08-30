@@ -122,10 +122,20 @@ public class PlayerController : MonoBehaviour {
 	//Method to run an attack
 	void Attack()
 	{
+		//if (grounded == false)
+		//{
+		//	anim.SetTrigger ("JumpAttack");
+		//}
+		//else
+		//{
+			anim.SetTrigger ("Attack");
+		//}
+
+
 		attackTrigger.enabled = true;
 
 		//Play attack animation
-		anim.SetTrigger ("Attack");
+		//anim.SetTrigger ("Attack");
 
 		//Will this solve the animation problem?
 		//anim.Play ("punch");
